@@ -1,7 +1,7 @@
 import { DashBoardHtmlFunc } from "../Js/HtmlFuncs/FromHbs";
-import { ShowAllFunc } from "../../ShowAll/Js/DalFuncs";
+import { ShowAll as DalShowAll } from "./Dalfuncs";
 import { ChangeClassFunc } from "../../../CommonFuncs/Header";
-import { AddListeners } from "./QrCodeToModal";
+//import { AddListeners } from "./QrCodeToModal";
 
 let DashBoardShow = async (inEvent) => {
     if ((inEvent === undefined) === false) {
@@ -10,10 +10,12 @@ let DashBoardShow = async (inEvent) => {
     };
 
     let jVarLocalFromTemplate = await DashBoardHtmlFunc();
-    //   console.log("jVarLocalFromTemplate : ", jVarLocalFromTemplate);
+    //    console.log("jVarLocalFromTemplate : ",jVarLocalFromTemplate);
+
     var template = Handlebars.compile(jVarLocalFromTemplate);
 
-    let jVarLocalDataNeeded = await ShowAllFunc();
+    let jVarLocalDataNeeded = await DalShowAll();
+    console.log("jVarLocalFromTemplate : ", jVarLocalDataNeeded);
 
     if (jVarLocalDataNeeded.KTF === false) {
 
@@ -22,7 +24,7 @@ let DashBoardShow = async (inEvent) => {
 
     document.getElementById("KCont1").innerHTML = jVarLocalHtml;
 
-    AddListeners();
+    //   AddListeners();
 };
 
 export { DashBoardShow }
