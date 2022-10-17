@@ -15,7 +15,7 @@ let DashBoardShow = async (inEvent) => {
     var template = Handlebars.compile(jVarLocalFromTemplate);
 
     let jVarLocalDataNeeded = await DalShowAll();
-    console.log("jVarLocalFromTemplate : ", jVarLocalDataNeeded);
+    console.log("jVarLocalFromTemplate-------------- : ", jVarLocalDataNeeded);
 
     if (jVarLocalDataNeeded.KTF === false) {
 
