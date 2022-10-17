@@ -25,6 +25,7 @@ let StartFunc = async () => {
     Object.entries(LocalOriginalData).forEach(
         ([key, value]) => {
             if (value.BookingRef in LocalBookingsData) {
+                value.QrCode = key;
                 value.CustomerName = LocalBookingsData[value.BookingRef].CustomerName;
                 value.Mobile = LocalBookingsData[value.BookingRef].Mobile;
                 value.Amount = LocalBookingsData[value.BookingRef].Amount;
@@ -36,7 +37,7 @@ let StartFunc = async () => {
             };
         }
     );
-    console.log("lllllllllllllllllll");
+    console.log("LocalOriginalData: ", LocalOriginalData);
     LocalReturnObject.JsonData = LocalOriginalData;
     LocalReturnObject.KTF = true;
 

@@ -1,18 +1,18 @@
-import { StartFunc as FuncsForPkStartFunc } from "../FuncsForPk/Start";
+import { StartFunc as MaxPkFunc } from "../FuncsForPk/MaxPk";
 import { FromBooking as QrCodesStartFunc } from "../../QrCodes/PushFuncs/SaveFunc";
 
 let StartFunc = async ({ inDataToSave = {} }) => {
     let LocalReturnObject = { KTF: false, KResult: "" };
 
     try {
-        let LocalFromFuncsForPkStartFunc = await FuncsForPkStartFunc();
+        let LocalFromFuncsForPkStartFunc = await MaxPkFunc();
 
         if (LocalFromFuncsForPkStartFunc.KTF === false) {
             LocalReturnObject.KReason = LocalFromFuncsForPkStartFunc.KReason;
             return await LocalReturnObject;
         };
 
-        let LocalMax = LocalFromFuncsForPkStartFunc.LastPk + 1;
+        let LocalMax = LocalFromFuncsForPkStartFunc.MaxPk + 1;
 
         let LocalFromJsonSave = await LocalToJson({
             inDataToSave: await LocalTemplateDataToSave({ inDataToSave }),

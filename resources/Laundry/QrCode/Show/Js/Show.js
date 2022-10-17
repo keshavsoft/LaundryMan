@@ -1,6 +1,6 @@
 import { ChangeClassFunc } from "../../../CommonFuncs/Header";
 import { QrcodeShowHtmlFunc } from "../Js/HtmlFuncs/FromHbs";
-import { CompletedShowFunc } from "../Js/Dalfuncs";
+import { CompletedShowFunc } from ".Dalfuncs";
 
 let QrcodeShow = async (inEvent) => {
     if ((inEvent === undefined) === false) {

@@ -61,8 +61,7 @@ let BookingSaveFunc = async () => {
     // if (LocalGarmentsTotal.KTF) {
     //     jVarLocalObject.QrCodes[11] = LocalGarmentsTotal.KResult
     // };
-
-    console.log("jVarLocalObject : ", jVarLocalObject);
+    
     let jVarLocalFromInsert = await PushFuncsStartFunc({ inDataToSave: jVarLocalObject });
     await LocalPostSaveFunc({ inFromSave: jVarLocalFromInsert });
 };
