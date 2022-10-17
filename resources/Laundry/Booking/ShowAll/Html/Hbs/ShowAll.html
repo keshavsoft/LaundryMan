@@ -1,0 +1,30 @@
+<div class="table-responsive">
+
+    <table class="table fs-3">
+        <thead>
+            <tr>
+                <th scope="col" width="5%" >#</th>
+                <th scope="col" width="25%">Customer Name</th>
+                <th scope="col"  width="20%">Mobile</th>
+                <th scope="col" Width="25%" style="text-align:right">Total Pcs</th>
+                <th scope="col" width="10%" style="text-align:right">Weight</th>
+                <th scope="col" width="10%" style="text-align:right">Amount</th>
+
+            </tr>
+        </thead>
+        <tbody id="KTableBody">
+
+            {{#each this}}
+            <tr>
+                <td>{{SNo}}</td>
+                <td>{{CustomerName}}</td>
+                <td>{{Mobile}}</td>
+                <td style="text-align:right">{{GarmentsTotalPcs}}</td>
+                <td style="text-align:right">{{Weight}}</td>
+                <td style="text-align:right">{{ShowInIndianDateFormat Amount}}</td>
+            </tr>
+            {{/each}}
+
+        </tbody>
+    </table>
+</div>

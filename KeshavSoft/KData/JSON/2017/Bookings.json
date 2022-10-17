@@ -1,0 +1,15 @@
+{
+    "1": {
+        "CustomerName": "keshav",
+        "Mobile": "9848163021",
+        "Weight": "",
+        "Amount": "",
+        "QrCodes": {
+            "1": {
+                "Name": "shirt",
+                "Pcs": 1
+            }
+        },
+        "DateTime": "14-10-2022-13-9-19"
+    }
+}
