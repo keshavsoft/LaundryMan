@@ -35,7 +35,6 @@ let StartFunc = async () => {
             }
         );
 
-
         Object.entries(LocalQrCodesAsObject).forEach(
             ([key, value]) => {
                 let LoopInsideQrData = Object.values(value.QrCodesObject).filter(p => p.Completed);
