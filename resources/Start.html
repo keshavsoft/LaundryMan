@@ -63,7 +63,7 @@
 
 	<script src="/js/neutralino.js"></script>
 	<script src="/js/handlebars.min-v4.7.7.js"></script>
-	
+
 	<script src="/js/print.min.js"></script>
 	<script src="/js/sweetalert2.js"></script>
 
@@ -72,10 +72,63 @@
 	<script src="/dist/bundle.js"></script>
 
 	<script>
+		let jFSearchInputKeyPress = (event) => {
+			console.log("dddddd : ", event.key);
+			if (event.key === 'Enter') { // key code of the keybord key
+				event.preventDefault();
+				// your code to Run
+				LocalSearchTable();
+			};
+		};
+
+		let myFunction = () => {
+			var input, filter, table, tr, td, i;
+			input = document.getElementById("SearchQrCodeTable");
+			filter = input.value;
+			table = document.getElementById("myTable");
+			tr = table.getElementsByTagName("tr");
+			console.log("1111111111 : ", input, filter);
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[0];
+				if (td) {
+					console.log("222222 : ", td.innerHTML);
+
+					if (td.innerHTML.indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
+			}
+		};
+
+		function LocalSearchTable() {
+			console.log("sssssssssss");
+			// Declare variables 
+			var input, filter, table, tr, td, i;
+			input = document.getElementById("SearchQrCodeTable");
+			filter = input.value.toUpperCase();
+			table = document.getElementById("myTable");
+			tr = table.getElementsByTagName("tr");
+
+			// Loop through all table rows, and hide those who don't match the search query
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td");
+				for (j = 0; j < td.length; j++) {
+					let tdata = td[j];
+					if (tdata) {
+						if (tdata.innerHTML.toUpperCase().indexOf(filter) > -1) {
+							tr[i].style.display = "";
+							break;
+						} else {
+							tr[i].style.display = "none";
+						}
+					}
+				}
+			}
+		};
 
 		Neutralino.init();
-
-
 	</script>
 
 </body>
