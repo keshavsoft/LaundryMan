@@ -7,7 +7,8 @@ import { ShowDatawithAlertForDelete } from "../Delete/Js/ShowDatawithAlertForDel
 import { ShowAll } from "../ShowAll/Js/ShowinDOMBody";
 import { QrcodeShowAll } from "../QrCode/Js/QrCode";
 import { LastBookingFunc } from "../LastBooking/Js/LastBooking";
-import { DashBoardShow } from "../DashBoard/Js/DashBordShow";
+import { FindBookingFunc as FindBookingShowToDOM } from "../FindBooking/Js/FindBooking";
+import { DashBoardShow as DashBoardShowToDOM} from "../DashBoard/Js/DashBordShow";
 
 let ToHeaderFunc = async () => {
     let jVarLocalFromHbs = await HeaderHtmlFunc();
@@ -39,8 +40,11 @@ let LocalAddListeners = () => {
     let jVarLocalLastBookingHeaderId = document.getElementById("LastBookingHeaderId");
     jVarLocalLastBookingHeaderId.addEventListener("click", LastBookingFunc);
 
+    let jVarLocalFindBookingHeaderId = document.getElementById("FindBookingHeaderId");
+    jVarLocalFindBookingHeaderId.addEventListener("click", FindBookingShowToDOM);
+
     let jVarLocalDashBoardHeaderId = document.getElementById("DashBoardHeaderId");
-    jVarLocalDashBoardHeaderId.addEventListener("click", DashBoardShow);
+    jVarLocalDashBoardHeaderId.addEventListener("click", DashBoardShowToDOM);
 
 };
 

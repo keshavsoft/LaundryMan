@@ -25,8 +25,24 @@ let DashBoardShow = async (inEvent) => {
 
     document.getElementById("KCont1").innerHTML = jVarLocalHtml;
 
-    //   AddListeners();
+    LocalAddlistener();
+
 };
+
+let LocalAddlistener = () => {
+    console.log("LocalAddlistener:", LocalAddlistener);
+    let jVarLocalTableButtons = document.querySelectorAll(".OrderButtonClass");
+    jVarLocalTableButtons.forEach(function (element) {
+        // element refers to the DOM node
+        element.addEventListener('click', LocalTableButtonFunc);
+    });
+}
+
+let LocalTableButtonFunc = (event) => {
+    let jVarLocalCurrentTarget = event.currentTarget;
+
+    console.log("jVarLocalCurrentTarget:", jVarLocalCurrentTarget);
+}
 
 let LocalApplyRowColours = ({ inJsonData }) => {
     Object.entries(inJsonData).forEach(
