@@ -10,21 +10,36 @@ let DashBoardShow = async (inEvent) => {
     };
 
     let jVarLocalFromTemplate = await DashBoardHtmlFunc();
-    //    console.log("jVarLocalFromTemplate : ",jVarLocalFromTemplate);
 
     var template = Handlebars.compile(jVarLocalFromTemplate);
 
     let jVarLocalDataNeeded = await DalShowAll();
-    // console.log("jVarLocalFromTemplate-------------- : ", jVarLocalDataNeeded);
 
     if (jVarLocalDataNeeded.KTF === false) {
 
     };
+
+    LocalApplyRowColours({ inJsonData: jVarLocalDataNeeded.JsonData });
+
     let jVarLocalHtml = template(jVarLocalDataNeeded.JsonData);
 
     document.getElementById("KCont1").innerHTML = jVarLocalHtml;
 
     //   AddListeners();
+};
+
+let LocalApplyRowColours = ({ inJsonData }) => {
+    Object.entries(inJsonData).forEach(
+        ([key, value]) => {
+            if (value.QrCodesCompleted === value.QrCodesTotal) {
+                value.TableRowColour = "table-success";
+            };
+
+            if (value.QrCodesCompleted < value.QrCodesTotal) {
+                value.TableRowColour = "table-danger";
+            };
+        }
+    );
 };
 
 export { DashBoardShow }
