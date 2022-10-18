@@ -1,12 +1,14 @@
 import { HeaderHtmlFunc } from "./HtmlFuncs/FromTemplates";
-import { ToHeaderFunc } from "../Booking/Js/InsertToDOM";
-import { ToKCont1 } from "../Booking/Insert/Js/ShowinDOM";
+import { ToHeaderFunc as BookingInsertToDOMHeader } from "../Booking/Js/InsertToDOM";
+import { ToKCont1 as BookingInsertToDOMBody } from "../Booking/Insert/Js/ShowinDOM";
 import { CompletedHeaderFunc } from "../Completed/Js/CompletedToDom";
 import { CompletedShow } from "../Completed/Completed/Js/Show";
 import { BillingHeaderFunc } from "../Billing/Js/BillingToDOM";
 import { BillingShow } from "../Billing/Billing/Js/BillingShowFunc";
 import { QrCodeShowHeaderFunc } from "../QrCode/Js/QrCodeToDOM";
 import { QrcodeShow } from "../QrCode/Show/Js/Show";
+import { CustomerHeaderFunc } from "../Customers/Js/CustomersToDOM";
+import { CustomersShowFunc } from "../Customers/Show/Js/Show";
 
 
 let BuildMenuFunc = async () => {
@@ -50,8 +52,8 @@ let LocalFuncAddListener = () => {
 };
 
 let LocalFuncBooking = async () => {
-    ToHeaderFunc();
-    ToKCont1();
+    BookingInsertToDOMHeader();
+    BookingInsertToDOMBody();
 };
 
 let LocalFuncCompleted = async () => {
@@ -70,8 +72,8 @@ let LocalFuncQrCode = async () => {
 };
 
 let LocalFuncCustomers = async () => {
-    QrCodeShowHeaderFunc();
-    QrcodeShow();
+    CustomerHeaderFunc();
+    CustomersShowFunc();
 };
 
 export { BuildMenuFunc }
