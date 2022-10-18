@@ -35,6 +35,7 @@ let LocalFuncAddListener = () => {
     let jVarLocalWashingCompletedId = document.getElementById("WashingCompletedId");
     let jVarLocalBillingId = document.getElementById("BillingId");
     let jVarLocalQrcodeshowId = document.getElementById("QrcodeshowId");
+    let jVarLocalCustomersId = document.getElementById("CustomersId");
 
     jVarLocalBookingId.addEventListener("click", LocalFuncBooking);
 
@@ -43,6 +44,8 @@ let LocalFuncAddListener = () => {
     jVarLocalBillingId.addEventListener("click", LocalFuncBilling);
    
     jVarLocalQrcodeshowId.addEventListener("click", LocalFuncQrCode);
+
+    jVarLocalCustomersId.addEventListener("click", LocalFuncCustomers);
 
 };
 
@@ -62,6 +65,11 @@ let LocalFuncBilling = async () => {
 };
 
 let LocalFuncQrCode = async () => {
+    QrCodeShowHeaderFunc();
+    QrcodeShow();
+};
+
+let LocalFuncCustomers = async () => {
     QrCodeShowHeaderFunc();
     QrcodeShow();
 };
