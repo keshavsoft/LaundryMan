@@ -37,7 +37,7 @@ let StartFunc = async () => {
             };
         }
     );
-    console.log("LocalOriginalData: ", LocalOriginalData);
+    // console.log("LocalOriginalData: ", LocalOriginalData);
     LocalReturnObject.JsonData = LocalOriginalData;
     LocalReturnObject.KTF = true;
 

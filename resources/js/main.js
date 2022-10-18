@@ -58,4 +58,4 @@ CheckFolderFunc().then(FromPromise => {
     };
 });
 
-QrCodeData().then(p => { console.log(p); })
+// QrCodeData().then(p => { console.log(p); })

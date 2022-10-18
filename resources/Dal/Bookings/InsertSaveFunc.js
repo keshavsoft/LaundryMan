@@ -4,7 +4,6 @@ import { BookingsInsertFunc } from "../../ToJson/Bookings";
 import { QrCodeSaveFunc } from "../../Dal/QrCodes/PushFuncs/SaveFunc";
 
 let InsertSaveFunc = async ({ inDataToSave = {} }) => {
-    console.log("dddddddddddd");
     let LocalReturnObject = { KTF: false, KResult: "" };
 
     try {
