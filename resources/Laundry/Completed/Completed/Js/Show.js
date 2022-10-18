@@ -15,7 +15,7 @@ let CompletedShow = async (inEvent) => {
     let jVarLocalDataNeeded = await CompletedShowFunc();
 
     if (jVarLocalDataNeeded.KTF === false) {
-    
+
     };
 
     if ("KReason" in jVarLocalDataNeeded) {
@@ -25,6 +25,9 @@ let CompletedShow = async (inEvent) => {
     let jVarLocalHtml = template(jVarLocalDataNeeded.JsonData);
 
     document.getElementById("KCont1").innerHTML = jVarLocalHtml;
+
+    let jVarLocalSearchQrCodeTable = document.getElementById("SearchQrCodeTable");
+    jVarLocalSearchQrCodeTable.focus();
 };
 
 export { CompletedShow };

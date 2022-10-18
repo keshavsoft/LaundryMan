@@ -73,11 +73,14 @@
 
 	<script>
 		let jFSearchInputKeyPress = (event) => {
-			console.log("dddddd : ", event.key);
 			if (event.key === 'Enter') { // key code of the keybord key
 				event.preventDefault();
+				let jVarLocalCurrentTarget = event.currentTarget;
+				let jVarLocalClosestCard = jVarLocalCurrentTarget.closest(".card");
+				let jVarLocalTable = jVarLocalClosestCard.querySelector("table");
+
 				// your code to Run
-				LocalSearchTable();
+				LocalSearchTable({ inTable: jVarLocalTable });
 			};
 		};
 
@@ -102,13 +105,15 @@
 			}
 		};
 
-		function LocalSearchTable() {
+		function LocalSearchTable({ inTable }) {
 			console.log("sssssssssss");
 			// Declare variables 
 			var input, filter, table, tr, td, i;
 			input = document.getElementById("SearchQrCodeTable");
 			filter = input.value.toUpperCase();
-			table = document.getElementById("myTable");
+			//table = document.getElementById("myTable");
+
+			table = inTable;
 			tr = table.getElementsByTagName("tr");
 
 			// Loop through all table rows, and hide those who don't match the search query
