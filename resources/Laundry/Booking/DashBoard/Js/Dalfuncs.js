@@ -8,11 +8,18 @@ let ShowAll = async () => {
     let LocalSNo = 1;
 
     LocalReturnObject.KReason = LocalDataFromJson.KReason;
-    LocalReturnObject.JsonData = LocalDataFromJson.JsonData;
 
     Object.entries(LocalDataFromJson.JsonData).forEach(
         ([key, value]) => {
-            value.SNo = LocalSNo;
+            LocalReturnObject.JsonData[key] = {
+                SNo: LocalSNo,
+                OrderNo: key,
+                CustomerName: value.CustomerName,
+                Mobile: value.Mobile,
+                QrCodesTotal: value.QrCodesTotal,
+                QrCodesCompleted: value.QrCodesCompleted,
+                QrCodesInProcess: value.QrCodesInProcess
+            };
 
             LocalSNo += 1;
         }
