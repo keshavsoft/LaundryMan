@@ -1,99 +1,97 @@
-<div class="row">
-    <div class="col-4">
-        <div class="card">
-            <div class="card-body">
-
-                <form id="FormVertical" onsubmit="return false;">
-                    <div class="row">
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <label class="col-form-label fs-2">Customer Name</label>
                         <div class="col">
-                            <label class="col-form-label fs-2">Customer Name</label>
-                            <div class="col">
-                                <input type="text" class="form-control fs-2" name="CustomerName" id="CustomerName"
-                                    aria-describedby="emailHelp" required="" value="{{CustomerName}}" disabled>
-                                <div class="invalid-feedback">
-                                    Should not be empty!
-                                </div>
+                            <input type="text" class="form-control fs-4" name="CustomerName" id="CustomerName"
+                                aria-describedby="emailHelp" required="" value="{{CustomerName}}" disabled>
+                            <div class="invalid-feedback">
+                                Should not be empty!
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class="col-md-6 col-form-label fs-4">Mobile</label>
                         <div class="col">
-                            <label class="col-md-6 col-form-label fs-2">Mobile</label>
-                            <div class="col">
-                                <input type="tel" class="form-control fs-2" name="Mobile" id="Mobile"
-                                    pattern="[6789][0-9]{9}" value="{{Mobile}}" disabled>
-                                <div class="invalid-feedback">
-                                    Should not be empty!
-                                </div>
+                            <input type="tel" class="form-control fs-2" name="Mobile" id="Mobile"
+                                pattern="[6789][0-9]{9}" value="{{Mobile}}" disabled>
+                            <div class="invalid-feedback">
+                                Should not be empty!
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="row">
-                        <div class="col">
-                            <label class="col-md-8 col-form-label fs-2">GarmentsTotalPcs</label>
-                            <div class="col">
-                                <input type="number" class="form-control fs-2" id="GarmentsTotalPcs"
-                                    aria-describedby="emailHelp" required="" value="{{GarmentsTotalPcs}}" disabled>
-                                <div class="invalid-feedback">
-                                    Should not be empty!
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <label class="col-md-6 col-form-label fs-2">Weight</label>
-                            <div class="col">
-                                <input type="number" class="form-control fs-2" name="Weight" id="Weight"
-                                    aria-describedby="emailHelp" required="" value="{{Weight}}" disabled>
-                                <div class="invalid-feedback">
-                                    Should not be empty!
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <label class="col-form-label fs-2">Amount</label>
-                            <div class="col-12">
-                                <input type="number" class="form-control fs-2" name="Amount" id="Amount"
-                                    aria-describedby="emailHelp" required="" value="{{Amount}}" disabled>
-                                <div class="invalid-feedback">
-                                    Should not be empty!
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                </form>
             </div>
-            <div class="card-footer text-muted">
-                <button class="btn btn-success fs-3" id="BookingSaveButtonId">Save</button>
+            <div class="col">
+
+                <div class="row">
+                    <div class="col">
+                        <label class="col-md-8 col-form-label fs-2">GarmentsTotalPcs</label>
+                        <div class="col">
+                            <input type="number" class="form-control fs-2" id="GarmentsTotalPcs"
+                                aria-describedby="emailHelp" required="" value="{{GarmentsTotalPcs}}" disabled>
+                            <div class="invalid-feedback">
+                                Should not be empty!
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class="col-md-6 col-form-label fs-2">Weight</label>
+                        <div class="col">
+                            <input type="number" class="form-control fs-2" name="Weight" id="Weight"
+                                aria-describedby="emailHelp" required="" value="{{Weight}}" disabled>
+                            <div class="invalid-feedback">
+                                Should not be empty!
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label class="col-form-label fs-2">Amount</label>
+                        <div class="col-12">
+                            <input type="number" class="form-control fs-2" name="Amount" id="Amount"
+                                aria-describedby="emailHelp" required="" value="{{Amount}}" disabled>
+                            <div class="invalid-feedback">
+                                Should not be empty!
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
-
-
         </div>
-    </div>
 
-    <div class="col-8">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">
-                    <div class="row">
-                        <div class="col-1 fs-2">#</div>
-                        <div class="col-8 fs-2">Garments</div>
-                        <div class="col-3 fs-2">Pcs</div>
-                    </div>
-                </h4>
-            </div>
-            <div class="card-body">
+
+    </div>
+    <div class="card-body">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane"
+                    type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Garments</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane"
+                    type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">QrCodes</button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
+                tabindex="0">
+
                 <div class="row">
                     <div class="col-1 fs-2">1</div>
                     <div class="col-8">
@@ -123,7 +121,6 @@
                     </div>
 
                 </div>
-
                 <div class="row">
                     <div class="col-1 fs-2">3</div>
                     <div class="col-8">
@@ -251,12 +248,19 @@
                     </div>
 
                 </div>
-
             </div>
+            <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                ...</div>
+            <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+                ...</div>
+            <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab"
+                tabindex="0">...</div>
         </div>
+
 
     </div>
 </div>
+
 <!-- Modal -->
 <div class="modal fade" id="ModalForQrCode" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
