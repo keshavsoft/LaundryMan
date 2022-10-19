@@ -21,7 +21,7 @@ let ToHeaderFunc = async () => {
 let LocalAddListeners = () => {
     let jVarLocalHomeId = document.getElementById("HomeId");
     jVarLocalHomeId.addEventListener("click", BuildMenuFunc);
-
+    
     let jVarLocalBookingHeaderTodayId = document.getElementById("BookingHeaderTodayId");
     jVarLocalBookingHeaderTodayId.addEventListener("click", TodayShowFunc);
 

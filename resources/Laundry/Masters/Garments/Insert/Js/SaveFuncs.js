@@ -1,18 +1,17 @@
 import { BookingInsertSuccessFunc } from "./HtmlFuns/FromHbs";
-import { InsertFunc as CustomersInsertDalFunc } from "../../../../Dal/Customers/Insert";
+import { InsertFunc as GarmentsInsertDalFunc } from "../../../../../Dal/Garments/Insert";
 
-let CommonGarmentDetailsKeyName = "GarmentDetails";
 
-let CustomersSaveFunc = async () => {
+let GarmentsSaveFunc = async () => {
     //  LocalPreSaveFunc();
     let jVarLocalObject = {};
-    let LocalCustomerDetails = jFCustomerDetails();
+    let LocalCustomerDetails = jFGarmentsDetails();
 
     if (LocalCustomerDetails.KTF) {
         jVarLocalObject = LocalCustomerDetails.KResult
     };
 
-    let jVarLocalFromInsert = await CustomersInsertDalFunc({ inDataToSave: jVarLocalObject });
+    let jVarLocalFromInsert = await GarmentsInsertDalFunc({ inDataToSave: jVarLocalObject });
     // await LocalPostSaveFunc({ inFromSave: jVarLocalFromInsert });
 };
 
@@ -55,23 +54,23 @@ let LocalPreSaveFunc = () => {
     jVarLocalBookingInsertSuccessId.classList.add("d-none");
 };
 
-let jFCustomerDetails = () => {
+let jFGarmentsDetails = () => {
     let jVarLocalReturnObject = { KTF: false, KResult: {} };
 
-    let jVarLocalCustomerName = document.getElementById("CustomerName");
-    let JVarLocalMobileNumber = document.getElementById("Mobile");
-    let JVarLocalCityName = document.getElementById("City");
+    let jVarLocalGarmentName = document.getElementById("GarmentName");
+    let JVarLocalGarmentDescription = document.getElementById("GarmentDescription");
+    let JVarLocalPrice = document.getElementById("Price");
 
     jVarLocalReturnObject.KTF = true;
 
     jVarLocalReturnObject.KResult = {
-        CustomerName: jVarLocalCustomerName.value,
-        Mobile: JVarLocalMobileNumber.value,
-        City: JVarLocalCityName.value
+        GarmentName: jVarLocalGarmentName.value,
+        GarmentDescription: JVarLocalGarmentDescription.value,
+        Price: JVarLocalPrice.value
     };
 
     return jVarLocalReturnObject;
 };
 
 
-export { CustomersSaveFunc };
+export { GarmentsSaveFunc };
