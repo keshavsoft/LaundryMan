@@ -27,7 +27,8 @@ let UniqueColumnReturn = async () => {
 
     return await UniqueColumnsDataAsJson.ColumnName;
 };
-let InsertFunc = async ({ inObjectToInsert = {} }) => {
+let InsertFunc = async ({ inDataToSave = {} }) => {
+    let inObjectToInsert = inDataToSave
     let LocalJsonFileName = "Customers.json";
 
     let LocalReturnObject = { KTF: false, KResult: "" };
@@ -63,8 +64,9 @@ let InsertFunc = async ({ inObjectToInsert = {} }) => {
         LocalReturnObject.KResult = `${inObjectToInsert[LocalReturnColumnName]} saved successfully...`;
         LocalReturnObject.KTF = true;
     };
-
     return await LocalReturnObject;
 };
 
 const toNumbers = arr => arr.map(Number);
+
+export { InsertFunc };
