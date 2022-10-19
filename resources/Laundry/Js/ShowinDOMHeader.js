@@ -8,7 +8,7 @@ import { BillingShow } from "../Billing/Billing/Js/BillingShowFunc";
 import { QrCodeShowHeaderFunc } from "../QrCode/Js/QrCodeToDOM";
 import { QrcodeShow } from "../QrCode/Show/Js/Show";
 import { CustomerHeaderFunc } from "../Customers/Js/CustomersToDOM";
-import { CustomersShowFunc } from "../Customers/Show/Js/Show";
+import { CustomersInsertFunc } from "../Customers/Insert/Js/Insert";
 
 
 let BuildMenuFunc = async () => {
@@ -44,7 +44,7 @@ let LocalFuncAddListener = () => {
     jVarLocalWashingCompletedId.addEventListener("click", LocalFuncCompleted);
 
     jVarLocalBillingId.addEventListener("click", LocalFuncBilling);
-   
+
     jVarLocalQrcodeshowId.addEventListener("click", LocalFuncQrCode);
 
     jVarLocalCustomersId.addEventListener("click", LocalFuncCustomers);
@@ -73,7 +73,7 @@ let LocalFuncQrCode = async () => {
 
 let LocalFuncCustomers = async () => {
     CustomerHeaderFunc();
-    CustomersShowFunc();
+    CustomersInsertFunc();
 };
 
 export { BuildMenuFunc }

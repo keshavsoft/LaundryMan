@@ -1,5 +1,6 @@
 import { CustomersHeaderHtmlFunc } from "./HtmlFromTemplates";
 import { BuildMenuFunc } from "../../Js/ShowinDOMHeader";
+import { CustomersInsertFunc } from "../Insert/Js/Insert";
 import { CustomersShowFunc } from "../Show/Js/Show";
 
 let CustomerHeaderFunc = async () => {
@@ -11,10 +12,14 @@ let CustomerHeaderFunc = async () => {
 
 let LocalAddListeners = () => {
     let jVarLocalHomeId = document.getElementById("HomeId");
-    let jVarLocalCustomersHeaderId = document.getElementById("CustomersHeaderId");
+    let jVarLocalCustomersInsertHeaderId = document.getElementById("CustomersInsertHeaderId");
+    let jVarLocalCustomersShowHeaderId = document.getElementById("CustomersShowHeaderId");
+
 
     jVarLocalHomeId.addEventListener("click", BuildMenuFunc);
-    jVarLocalCustomersHeaderId.addEventListener("click", CustomersShowFunc);
+    jVarLocalCustomersInsertHeaderId.addEventListener("click", CustomersInsertFunc);
+    jVarLocalCustomersShowHeaderId.addEventListener("click", CustomersShowFunc);
+
 };
 
 
