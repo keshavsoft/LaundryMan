@@ -55,17 +55,19 @@ let LocalPreSaveFunc = () => {
     jVarLocalBookingInsertSuccessId.classList.add("d-none");
 };
 
-let jFCustomerDetails =  () => {
+let jFCustomerDetails = () => {
     let jVarLocalReturnObject = { KTF: false, KResult: {} };
 
     let jVarLocalCustomerName = document.getElementById("CustomerName");
     let JVarLocalMobileNumber = document.getElementById("Mobile");
+    let JVarLocalCityName = document.getElementById("City");
 
     jVarLocalReturnObject.KTF = true;
 
     jVarLocalReturnObject.KResult = {
         CustomerName: jVarLocalCustomerName.value,
-        Mobile: JVarLocalMobileNumber.value
+        Mobile: JVarLocalMobileNumber.value,
+        City: JVarLocalCityName.value
     };
 
     return jVarLocalReturnObject;

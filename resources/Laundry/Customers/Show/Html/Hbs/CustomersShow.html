@@ -1,0 +1,26 @@
+<div class="table-responsive">
+
+    <table class="table fs-3 table-hover">
+        <thead>
+            <tr>
+                <th scope="col" width="5%">#</th>
+                <th scope="col" width="25%">Customer Name</th>
+                <th scope="col" width="20%">Mobile</th>
+                <th scope="col" width="20%">City</th>
+
+            </tr>
+        </thead>
+        <tbody id="KTableBody">
+
+            {{#each this}}
+            {{log "customersShow" this}}
+            <tr>
+                <td>{{SNo}}</td>
+                <td>{{CustomerName}}</td>
+                <td>{{Mobile}}</td>
+                <td>{{City}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

@@ -29,3 +29,5 @@ let ShowFunc = async () => {
 
     return await LocalReturnObject;
 };
+
+export{ShowFunc};
