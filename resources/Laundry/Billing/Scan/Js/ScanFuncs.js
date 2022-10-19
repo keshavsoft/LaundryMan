@@ -1,6 +1,6 @@
-import { InsertFunc } from "../../../../Dal/Billing/ScanFuncs";
 import { BillingScanHtmlFunc } from "../../Scan/Js/HtmlFuncs/FromHbs";
 import { ChangeClassFunc } from "../../../CommonFuncs/Header";
+import { InsertFunc as DalSaveFunc } from "../../../../Dal/Billing/PushFuncs/SaveFunc";
 
 let BillingScanFuncs = async () => {
     let jVarLocalFormVertical = document.getElementById("FormVertical");
@@ -47,7 +47,7 @@ let BillingScanHeaderId = async (inEvent) => {
     let jVarLocalKCont1 = document.getElementById("KCont1");
     jVarLocalKCont1.innerHTML = jVarInsideTemplate;
     LocalSetFocusFunc();
-    LocalFuncAddListeners();
+    LocalAddListeners();
 };
 
 let LocalSetFocusFunc = () => {
@@ -55,7 +55,7 @@ let LocalSetFocusFunc = () => {
     jVarLocalScanId.focus();
 };
 
-let LocalFuncAddListeners = () => {
+let LocalAddListeners = () => {
     let jVarLocalGoButtonid = document.getElementById("GoButtonid");
     let jVarLocalScanId = document.getElementById("ScanId");
 
@@ -63,24 +63,37 @@ let LocalFuncAddListeners = () => {
         if (event.key === 'Enter') { // key code of the keybord key
             event.preventDefault();
             // your code to Run
-            LocalFuncGoClick();
+            LocalGoClick();
         };
     });
 
-    jVarLocalGoButtonid.addEventListener("click", LocalFuncGoClick);
+    jVarLocalGoButtonid.addEventListener("click", LocalGoClick);
 };
 
-let LocalFuncGoClick = async () => {
+let LocalGoClick = async () => {
     let jVarLocalScanId = document.getElementById("ScanId");
     let jVarLocalDangerAlertId = document.getElementById("DangerAlertId");
 
-    let jVarLocalFromInsert = await InsertFunc({ inQrCode: jVarLocalScanId.value });
+    let jVarLocalQrCode = LocalPullQrCodeFromScan({ InScanData: jVarLocalScanId.value });
 
+    let jVarLocalFromInsert = await DalSaveFunc({ inQrCode: jVarLocalQrCode });
+    console.log("jVarLocalFromInsert--------------- : ", jVarLocalFromInsert);
     if (jVarLocalFromInsert.KTF === false) {
         jVarLocalDangerAlertId.classList.remove("d-none");
         jVarLocalDangerAlertId.innerHTML = jVarLocalFromInsert.KReason;
         jVarLocalScanId.focus();
     };
+};
+
+let LocalPullQrCodeFromScan = ({ InScanData }) => {
+    let LocalScanAsArray = InScanData.split("/");
+    let LocalReturnValue;
+
+    if (LocalScanAsArray.length > 0) {
+        LocalReturnValue = LocalScanAsArray[0]
+    };
+
+    return LocalReturnValue;
 };
 
 export { BillingScanFuncs, BillingScanHeaderId };
