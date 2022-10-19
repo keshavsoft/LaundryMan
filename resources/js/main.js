@@ -2,7 +2,7 @@ import { ToKCont1 } from "../Laundry/Booking/Insert/Js/ShowinDOM";
 import { ToHeaderFunc } from "../Laundry/Booking/Js/InsertToDOM";
 import { CheckFolderFunc } from "../Dal/test";
 import { StartFunc } from "../Dal/Bookings/PullFuncs/WithCompleted";
-import { StartFunc as QrCodeData } from "../Dal/QrCodes/PullFuncs/WithBookingData";
+import { ToDOMBodyFromPK } from "../Laundry/Booking/FindBooking/Js/FindBooking";
 
 let jFShowInKLastRefreshDT = () => {
     let jVarLocalKLastRefreshDT = document.getElementById("KLastRefreshDT");
@@ -44,7 +44,9 @@ CheckFolderFunc().then(FromPromise => {
     if (FromPromise.KTF) {
 
         jFStart().then(p => {
+            // ToDOMBodyFromPK({ inBookingPK: 3 }).then(p => {
 
+            // })
         });
 
     } else {

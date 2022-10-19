@@ -2,6 +2,7 @@ import { DashBoardHtmlFunc } from "../Js/HtmlFuncs/FromHbs";
 import { ShowAll as DalShowAll } from "./Dalfuncs";
 import { ChangeClassFunc } from "../../../CommonFuncs/Header";
 //import { AddListeners } from "./QrCodeToModal";
+import { ToDOMBodyFromPK as FindBookingToDOMBodyFromPK } from "../../FindBooking/Js/FindBooking";
 
 let DashBoardShow = async (inEvent) => {
     if ((inEvent === undefined) === false) {
@@ -38,10 +39,12 @@ let LocalAddlistener = () => {
     });
 }
 
-let LocalTableButtonFunc = (event) => {
+let LocalTableButtonFunc = async (event) => {
     let jVarLocalCurrentTarget = event.currentTarget;
 
-    console.log("jVarLocalCurrentTarget:", jVarLocalCurrentTarget);
+    console.log("jVarLocalCurrentTarget:", jVarLocalCurrentTarget.dataset.orderno);
+    await FindBookingToDOMBodyFromPK({ inBookingPK: jVarLocalCurrentTarget.dataset.orderno });
+
 }
 
 let LocalApplyRowColours = ({ inJsonData }) => {

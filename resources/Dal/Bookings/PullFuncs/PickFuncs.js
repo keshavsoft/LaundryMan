@@ -11,6 +11,7 @@ let FromPk = async ({ inRowPK }) => {
     if (inRowPK in LocalCustomersDataAsJson) {
         LocalReturnObject.KTF = true;
         LocalReturnObject.KResult = LocalCustomersDataAsJson[inRowPK];
+        LocalReturnObject.KResult = { ...LocalReturnObject.KResult, OrderNo: inRowPK };
     };
 
     return await LocalReturnObject;

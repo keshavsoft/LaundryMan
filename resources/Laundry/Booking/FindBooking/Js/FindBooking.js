@@ -3,7 +3,7 @@ import { ChangeClassFunc } from "../../../CommonFuncs/Header";
 // import { BookingSaveFunc } from "../Js/SaveFuncs";
 // import { BookingClear } from "../Js/ClearFunc";
 import { LastBooking } from "../../../../Dal/Bookings/Pick";
-import { LastPkData } from "../../../../Dal/Bookings/PullFuncs/PickFuncs";
+import { LastPkData, FromPk as BookingFromPK } from "../../../../Dal/Bookings/PullFuncs/PickFuncs";
 
 let FindBookingFunc = async (inEvent) => {
     if ((inEvent === undefined) === false) {
@@ -17,6 +17,25 @@ let FindBookingFunc = async (inEvent) => {
 
     var template = Handlebars.compile(jVarLocalFromHbs);
     let jVarLocalDataToShow = await LastPkData();
+
+    if (jVarLocalDataToShow.KTF) {
+        jVarLocalKCont1.innerHTML = template(jVarLocalDataToShow.KResult);
+    };
+
+    // LocalFuncAddListeners();
+    LocalSetFocusFunc();
+};
+
+let ToDOMBodyFromPK = async ({ inBookingPK }) => {
+    let jVarLocalFindBookingHeaderId = document.getElementById("FindBookingHeaderId");
+    ChangeClassFunc({ inHtmlControl: jVarLocalFindBookingHeaderId });
+
+    let jVarLocalFromHbs = await FindBookingtHtmlFunc();
+
+    let jVarLocalKCont1 = document.getElementById("KCont1");
+
+    var template = Handlebars.compile(jVarLocalFromHbs);
+    let jVarLocalDataToShow = await BookingFromPK({ inRowPK: inBookingPK });
 
     if (jVarLocalDataToShow.KTF) {
 
@@ -41,4 +60,4 @@ let LocalSetFocusFunc = () => {
 
 // };
 
-export { FindBookingFunc };
+export { FindBookingFunc, ToDOMBodyFromPK };

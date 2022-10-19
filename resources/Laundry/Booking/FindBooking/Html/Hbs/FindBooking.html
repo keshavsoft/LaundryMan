@@ -1,13 +1,14 @@
+{{log "data : " this}}
 <div class="card">
     <div class="card-header">
         <div class="row">
             <div class="col">
                 <div class="row">
                     <div class="col">
-                        <label class="col-form-label fs-2">Customer Name</label>
+                        <label class="col-form-label">Order Number</label>
                         <div class="col">
-                            <input type="text" class="form-control fs-4" name="CustomerName" id="CustomerName"
-                                aria-describedby="emailHelp" required="" value="{{CustomerName}}" disabled>
+                            <input type="text" class="form-control" id="OrderNo" aria-describedby="emailHelp"
+                                required="" value="{{OrderNo}}" disabled>
                             <div class="invalid-feedback">
                                 Should not be empty!
                             </div>
@@ -16,10 +17,10 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <label class="col-md-6 col-form-label fs-4">Mobile</label>
+                        <label class="col-form-label">Customer Name</label>
                         <div class="col">
-                            <input type="tel" class="form-control fs-2" name="Mobile" id="Mobile"
-                                pattern="[6789][0-9]{9}" value="{{Mobile}}" disabled>
+                            <input type="text" class="form-control" name="CustomerName" id="CustomerName"
+                                aria-describedby="emailHelp" required="" value="{{CustomerName}}" disabled>
                             <div class="invalid-feedback">
                                 Should not be empty!
                             </div>
@@ -29,13 +30,25 @@
 
             </div>
             <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <label class="col-md-6 col-form-label">Mobile</label>
+                        <div class="col">
+                            <input type="tel" class="form-control" name="Mobile" id="Mobile" pattern="[6789][0-9]{9}"
+                                value="{{Mobile}}" disabled>
+                            <div class="invalid-feedback">
+                                Should not be empty!
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="col">
-                        <label class="col-md-8 col-form-label fs-2">GarmentsTotalPcs</label>
+                        <label class="col-md-8 col-form-label">GarmentsTotalPcs</label>
                         <div class="col">
-                            <input type="number" class="form-control fs-2" id="GarmentsTotalPcs"
-                                aria-describedby="emailHelp" required="" value="{{GarmentsTotalPcs}}" disabled>
+                            <input type="number" class="form-control" id="GarmentsTotalPcs" aria-describedby="emailHelp"
+                                required="" value="{{GarmentsTotalPcs}}" disabled>
                             <div class="invalid-feedback">
                                 Should not be empty!
                             </div>
@@ -43,11 +56,16 @@
 
                     </div>
                 </div>
+
+
+            </div>
+
+            <div class="col">
                 <div class="row">
                     <div class="col">
-                        <label class="col-md-6 col-form-label fs-2">Weight</label>
+                        <label class="col-md-6 col-form-label">Weight</label>
                         <div class="col">
-                            <input type="number" class="form-control fs-2" name="Weight" id="Weight"
+                            <input type="number" class="form-control" name="Weight" id="Weight"
                                 aria-describedby="emailHelp" required="" value="{{Weight}}" disabled>
                             <div class="invalid-feedback">
                                 Should not be empty!
@@ -56,12 +74,11 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col">
-                        <label class="col-form-label fs-2">Amount</label>
+                        <label class="col-form-label">Amount</label>
                         <div class="col-12">
-                            <input type="number" class="form-control fs-2" name="Amount" id="Amount"
+                            <input type="number" class="form-control" name="Amount" id="Amount"
                                 aria-describedby="emailHelp" required="" value="{{Amount}}" disabled>
                             <div class="invalid-feedback">
                                 Should not be empty!
