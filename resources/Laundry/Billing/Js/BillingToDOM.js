@@ -1,6 +1,6 @@
 import { BillingHeaderHtmlFunc } from "./HtmlFromTemplates";
 import { BuildMenuFunc } from "../../Js/ShowinDOMHeader";
-import { BillingShow } from "../Billing/Js/BillingShowFunc";
+import { BillingShow } from "../Show/Js/BillingShowFunc";
 import { BillingScanHeaderId } from "../Scan/Js/ScanFuncs";
 
 let BillingHeaderFunc = async () => {

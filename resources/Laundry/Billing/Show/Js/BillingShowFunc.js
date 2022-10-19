@@ -1,6 +1,6 @@
 import { ChangeClassFunc } from "../../../CommonFuncs/Header";
-import { BillingHtmlFunc } from "../Js/HtmlFuncs/FromHbs";
-import { BillingShowFunc } from "../Js/DalFunc";
+import { BillingHtmlFunc as BillingShowHtmlFunc } from "../Js/HtmlFuncs/FromHbs";
+import { BillingShowFunc as BillingShowDalFunc } from "../../Show/Js/DalFunc";
 
 let BillingShow = async (inEvent) => {
     if ((inEvent === undefined) === false) {
@@ -8,12 +8,12 @@ let BillingShow = async (inEvent) => {
         ChangeClassFunc({ inHtmlControl: jVarLocalCurrentTarget });
     };
 
-    let jVarLocalFromTemplate = await BillingHtmlFunc();
+    let jVarLocalFromTemplate = await BillingShowHtmlFunc();
 
     var template = Handlebars.compile(jVarLocalFromTemplate);
 
-    let jVarLocalDataNeeded = await BillingShowFunc();
-    
+    let jVarLocalDataNeeded = await BillingShowDalFunc();
+
     if (jVarLocalDataNeeded.KTF === false) {
 
     };
@@ -25,6 +25,9 @@ let BillingShow = async (inEvent) => {
     let jVarLocalHtml = template(jVarLocalDataNeeded.JsonData);
 
     document.getElementById("KCont1").innerHTML = jVarLocalHtml;
+
+    let jVarLocalSearchQrCodeTable = document.getElementById("SearchQrCodeTable");
+    jVarLocalSearchQrCodeTable.focus();
 };
 
 export { BillingShow };

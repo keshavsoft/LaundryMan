@@ -1,6 +1,6 @@
 import { CompletedHeaderHtmlFunc } from "./HtmlFromTemplates";
 import { BuildMenuFunc } from "../../Js/ShowinDOMHeader";
-import { CompletedShow } from "../Completed/Js/Show";
+import { CompletedShow } from "../Show/Js/Show";
 import { ScanHeaderId } from "../Scan/Js/ScanFuncs";
 
 let CompletedHeaderFunc = async () => {

@@ -13,12 +13,13 @@
         </thead>
         <tbody id="KTableBody">
             {{#each this}}
+            {{log "billing" this}}
             <tr>
                 <td>{{SNo}}</td>
-                <td>{{value.CustomerName}}</td>
-                <td>{{value.Mobile}}</td>
-                <td>{{value.Garments}}</td>
-                <td>{{value.Weight}}</td>
+                <td>{{CustomerName}}</td>
+                <td>{{Mobile}}</td>
+                <td>{{GarmentName}}</td>
+                <td>{{QrCode}}</td>
                 <td>{{ShowInIndianDateFormat value.Amount}}</td>
             
                 <td>{{key}}</td>
