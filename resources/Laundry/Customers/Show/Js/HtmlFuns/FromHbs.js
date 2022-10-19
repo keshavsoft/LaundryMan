@@ -5,4 +5,4 @@ let CustomersHtmlFunc = async () => {
     return await data;
 };
 
- export {CustomersHtmlFunc};
+export { CustomersHtmlFunc }

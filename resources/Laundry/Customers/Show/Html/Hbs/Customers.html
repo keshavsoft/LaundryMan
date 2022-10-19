@@ -1,48 +1,69 @@
-<div class="card">
-    <div class="card-header">
-        <div class="row">
-            <div class="col">Customers</div>
-            <div class="col"><input id="SearchQrCodeTable" class="form-control" type="search" placeholder="Search"
-                onkeypress="jFSearchInputKeyPress(event)" aria-label="Search" autocomplete="off"></div>
+<div class="row">
+    <div class="col-4">
+        <div class="card">
+            <div class="card-body">
+
+                <form id="FormVertical" onsubmit="return false;">
+                    <div class="row">
+                        <div class="col">
+                            <label class="col-form-label fs-2">Customer Name</label>
+                            <div class="col">
+                                <input type="text" class="form-control fs-2" name="CustomerName" id="CustomerName"
+                                    aria-describedby="emailHelp" required="">
+                                <div class="invalid-feedback">
+                                    Should not be empty!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label class="col-md-6 col-form-label fs-2">Mobile</label>
+                            <div class="col">
+                                <input type="tel" class="form-control fs-2" name="Mobile" id="Mobile"
+                                    pattern="[6789][0-9]{9}">
+                                <div class="invalid-feedback">
+                                    Should not be empty!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-muted">
+                <button class="btn btn-success fs-3" id="CustomersSaveButtonId">Save</button>
+            </div>
         </div>
     </div>
 
-<div class="table-responsive">
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">OrderNo</th>
-                <th scope="col">Customer Name</th>
-                <th scope="col">Mobile</th>
-                <th scope="col">Garment Name</th>
-                <th scope="col">QrCode</th>
-                
-            </tr>
-        </thead>
-        <tbody id="KTableBody">
-            {{#each this}}
-            {{log "QrCode" this}}
-            <tr>
-                <td>{{SNo}}</td>
-                <td>{{OrderNo}}</td>
-                <td>{{CustomerName}}</td>
-                <td>{{Mobile}}</td>
-                <td>{{GarmentName}}</td>
-                <td>{{QrCode}}</td>
-                <td>{{ShowInIndianDateFormat Amount}}</td>
-            
-                <td>{{key}}</td>
-            </tr>
-            {{/each}}
-
-            
-     </tbody>
-    </table>
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">
+                    <div class="row">
+                        
+                    </div>
+                </h4>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="card-footer text-muted">
 
-    Footer
+<!-- Modal -->
+<div class="modal fade" id="ModalForQrCode" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">QrCodes</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="ModalBody">
 
-</div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="printJS('ModalBody', 'html')">Print</button>
+            </div>
+        </div>
+    </div>
 </div>

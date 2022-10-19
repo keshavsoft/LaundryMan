@@ -1,30 +1,35 @@
 import { ChangeClassFunc } from "../../../CommonFuncs/Header";
-import { CustomersHtmlFunc } from "../Js/HtmlFuncs/FromHbs";
-// import { CompletedShowFunc } from "./Dalfuncs";
+import { CustomersHtmlFunc } from "../Js/HtmlFuns/FromHbs";
+import { CustomersSaveFunc } from "../Js/SaveFuncs";
 
 let CustomersShowFunc = async (inEvent) => {
-    if ((inEvent === undefined) === false) {
-        let jVarLocalCurrentTarget = inEvent.currentTarget;
-        ChangeClassFunc({ inHtmlControl: jVarLocalCurrentTarget });
+        if ((inEvent === undefined) === false) {
+            let jVarLocalCurrentTarget = inEvent.currentTarget;
+            ChangeClassFunc({ inHtmlControl: jVarLocalCurrentTarget });
+        };
+    
+        let jVarLocalFromHbs = await CustomersHtmlFunc();
+    
+        let jVarLocalKCont1 = document.getElementById("KCont1");
+        jVarLocalKCont1.innerHTML = jVarLocalFromHbs;
+    
+        LocalFuncAddListeners();
+        LocalSetFocusFunc();
+    };
+    
+    let LocalSetFocusFunc = () => {
+        let jVarLocalCustomerName = document.getElementById("CustomerName");
+        jVarLocalCustomerName.focus();
     };
 
-    let jVarLocalFromTemplate = await CustomersHtmlFunc();
-
-    var template = Handlebars.compile(jVarLocalFromTemplate);
-
-    let jVarLocalDataNeeded = await CompletedShowFunc();
-
-    if (jVarLocalDataNeeded.KTF === false) {
+    let LocalFuncAddListeners = () => {
+        let jVarLocalCustomersSaveButtonId = document.getElementById("CustomersSaveButtonId");
+    
+        jVarLocalCustomersSaveButtonId.addEventListener("click", async (event) => {
+            await CustomersSaveFunc();
+        });
     
     };
-
-    if ("KReason" in jVarLocalDataNeeded) {
-        console.log("KError : ", jVarLocalDataNeeded.KReason);
-    };
-
-    let jVarLocalHtml = template(jVarLocalDataNeeded.JsonData);
-
-    document.getElementById("KCont1").innerHTML = jVarLocalHtml;
-};
+    
 
 export { CustomersShowFunc };
