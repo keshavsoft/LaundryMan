@@ -11,7 +11,7 @@ let CustomersHeaderFunc = async () => {
 };
 
 let LocalAddListeners = () => {
-    let jVarLocalHomeId = document.getElementById("HomeId");
+    let jVarLocalHomeId = document.getElementById("MastersHeaderId");
     let jVarLocalCustomersInsertHeaderId = document.getElementById("CustomersInsertHeaderId");
     let jVarLocalCustomersShowHeaderId = document.getElementById("CustomersShowHeaderId");
 
