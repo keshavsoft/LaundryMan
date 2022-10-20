@@ -7,9 +7,8 @@ import { BillingHeaderFunc } from "../Billing/Js/BillingToDOM";
 import { BillingShow } from "../Billing/Show/Js/BillingShowFunc";
 import { QrCodeShowHeaderFunc } from "../QrCode/Js/QrCodeToDOM";
 import { QrcodeShow } from "../QrCode/Show/Js/Show";
-import { CustomerHeaderFunc } from "../Customers/Js/CustomersToDOM";
-import { CustomersInsertFunc } from "../Customers/Insert/Js/Insert";
-
+import { ToHeaderFunc as MastersToDOMHeader} from "../Masters/Js/MastersToDOM";
+import { CustomersHeaderFunc } from "../Masters/Customers/Js/CustomersToDOM";
 
 let BuildMenuFunc = async () => {
     let jVarLocalFromHbs = await HeaderHtmlFunc();
@@ -37,23 +36,27 @@ let LocalFuncAddListener = () => {
     let jVarLocalWashingCompletedId = document.getElementById("WashingCompletedId");
     let jVarLocalBillingId = document.getElementById("BillingId");
     let jVarLocalQrcodeshowId = document.getElementById("QrcodeshowId");
-    let jVarLocalCustomersId = document.getElementById("CustomersId");
+    let jVarLocalMastersId = document.getElementById("MastersId");
 
     jVarLocalBookingId.addEventListener("click", LocalFuncBooking);
-
+    
     jVarLocalWashingCompletedId.addEventListener("click", LocalFuncCompleted);
 
     jVarLocalBillingId.addEventListener("click", LocalFuncBilling);
 
     jVarLocalQrcodeshowId.addEventListener("click", LocalFuncQrCode);
 
-    jVarLocalCustomersId.addEventListener("click", LocalFuncCustomers);
+    jVarLocalMastersId.addEventListener("click", LocalFuncMasters);
 
 };
 
 let LocalFuncBooking = async () => {
     BookingInsertToDOMHeader();
     BookingInsertToDOMBody();
+};
+
+let LocalFuncMasters = async () => {
+    MastersToDOMHeader();
 };
 
 let LocalFuncCompleted = async () => {
@@ -69,11 +72,6 @@ let LocalFuncBilling = async () => {
 let LocalFuncQrCode = async () => {
     QrCodeShowHeaderFunc();
     QrcodeShow();
-};
-
-let LocalFuncCustomers = async () => {
-    CustomerHeaderFunc();
-    CustomersInsertFunc();
 };
 
 export { BuildMenuFunc }

@@ -1,4 +1,4 @@
-import { ChangeClassFunc } from "../../../CommonFuncs/Header";
+import { ChangeClassFunc } from "../../../../CommonFuncs/Header";
 import { CustomersHtmlFunc } from "../Js/HtmlFuns/FromHbs";
 import { CustomersSaveFunc } from "../../Insert/Js/SaveFuncs";
 

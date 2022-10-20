@@ -1,6 +1,6 @@
 import { CustomersShowHtmlFunc } from "./HtmlFuns/FromHbs";
-import { ChangeClassFunc } from "../../../CommonFuncs/Header";
-import { ShowFunc as CustomersShowDalFunc } from "../../../../Dal/Customers/Show";
+import { ChangeClassFunc } from "../../../../CommonFuncs/Header";
+import { ShowFunc as CustomersShowDalFunc } from "../../../../../Dal/Customers/Show";
 
 let CustomersShowFunc = async (inEvent) => {
     if ((inEvent === undefined) === false) {
