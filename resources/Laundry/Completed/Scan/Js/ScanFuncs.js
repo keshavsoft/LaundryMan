@@ -73,17 +73,29 @@ let LocalAddListeners = () => {
 
 let LocalGoClick = async () => {
     let jVarLocalScanId = document.getElementById("ScanId");
-    let jVarLocalDangerAlertId = document.getElementById("DangerAlertId");
+    let jVarLocalScanValue = jVarLocalScanId.value;
 
-    let jVarLocalQrCode = LocalPullQrCodeFromScan({ InScanData: jVarLocalScanId.value });
+    let jVarLocalDangerAlertId = document.getElementById("DangerAlertId");
+    let jVarLocalSuccessAlertId = document.getElementById("SuccessAlertId");
+
+    let jVarLocalQrCode = LocalPullQrCodeFromScan({ InScanData: jVarLocalScanValue });
 
     let jVarLocalFromInsert = await DalSaveFunc({ inQrCode: jVarLocalQrCode });
-    console.log("jVarLocalFromInsert--------------- : ", jVarLocalFromInsert);
+
     if (jVarLocalFromInsert.KTF === false) {
         jVarLocalDangerAlertId.classList.remove("d-none");
         jVarLocalDangerAlertId.innerHTML = jVarLocalFromInsert.KReason;
         jVarLocalScanId.focus();
     };
+
+    if (jVarLocalFromInsert.KTF) {
+        jVarLocalScanId.value = "";
+
+        jVarLocalSuccessAlertId.classList.remove("d-none");
+        jVarLocalSuccessAlertId.innerHTML = `${jVarLocalScanValue}: successfully saved...`;
+        jVarLocalScanId.focus();
+    };
+
 };
 
 let LocalPullQrCodeFromScan = ({ InScanData }) => {
