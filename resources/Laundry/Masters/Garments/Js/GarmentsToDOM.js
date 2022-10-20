@@ -1,7 +1,7 @@
 import { GarmentsHeaderHtmlFunc } from "../Js/HtmlFromTemplates";
 import { BuildMenuFunc } from "../../../Js/ShowinDOMHeader";
-import { CustomersInsertFunc } from "../Insert/Js/Insert";
 import { GarmentsInsertFunc } from "../Insert/Js/Insert";
+import { GarmentsShowFunc } from "../Show/Js/Show";
 
 let GarmentsHeaderFunc = async () => {
     let jVarLocalFromHbs = await GarmentsHeaderHtmlFunc();
@@ -18,6 +18,7 @@ let LocalAddListeners = () => {
 
     jVarLocalHomeId.addEventListener("click", BuildMenuFunc);
     jVarLocalGarmentsInsertHeaderId.addEventListener("click", GarmentsInsertFunc);
+    jVarLocalGarmentsShowHeaderId.addEventListener("click", GarmentsShowFunc);
 
 };
 

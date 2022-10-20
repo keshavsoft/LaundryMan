@@ -1,8 +1,9 @@
 import { HeaderHtmlFunc as MastersHeaderHtmlFunc } from "./HtmlFuncs/HtmlFromTemplate";
-import { CustomersInsertFunc } from "../Customers/Insert/Js/Insert";
-import { CustomersHeaderFunc } from "../Customers/Js/CustomersToDOM";
 import { BuildMenuFunc } from "../../Js/ShowinDOMHeader";
+import { CustomersHeaderFunc } from "../Customers/Js/CustomersToDOM";
+import { CustomersInsertFunc } from "../Customers/Insert/Js/Insert";
 import { GarmentsHeaderFunc } from "../Garments/Js/GarmentsToDOM";
+import { GarmentsInsertFunc } from "../Garments/Insert/Js/Insert";
 
 let ToHeaderFunc = async () => {
     let jVarLocalFromHbs = await MastersHeaderHtmlFunc();
@@ -17,10 +18,12 @@ let LocalAddListeners = () => {
     jVarLocalHomeId.addEventListener("click", BuildMenuFunc);
 
     let jVarLocalMastersCustomersId = document.getElementById("MastersCustomersId");  
-    jVarLocalMastersCustomersId.addEventListener("click", CustomersHeaderFunc);
+    jVarLocalMastersCustomersId.addEventListener("click", CustomersHeaderFunc,true);
+    jVarLocalMastersCustomersId.addEventListener("click", CustomersInsertFunc,true);
 
     let jVarLocalMastersGarmentsId = document.getElementById("MastersGarmentsId");
-    jVarLocalMastersGarmentsId.addEventListener("click",GarmentsHeaderFunc);
+    jVarLocalMastersGarmentsId.addEventListener("click",GarmentsHeaderFunc,true);
+    jVarLocalMastersGarmentsId.addEventListener("click",GarmentsInsertFunc,true);
 
 
 };
