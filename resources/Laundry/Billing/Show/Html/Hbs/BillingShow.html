@@ -8,12 +8,11 @@
                 <th scope="col">Garment</th>
                 <th scope="col">QrCode</th>
                 <th scope="col">OrderNo</th>
-
             </tr>
         </thead>
         <tbody id="KTableBody">
             {{#each this}}
-            {{log "billing" this}}
+            {{log "billing loop inside" this}}
             <tr>
                 <td>{{SNo}}</td>
                 <td>{{CustomerName}}</td>

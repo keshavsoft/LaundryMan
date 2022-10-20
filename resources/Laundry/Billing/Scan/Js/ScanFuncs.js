@@ -77,7 +77,7 @@ let LocalGoClick = async () => {
     let jVarLocalQrCode = LocalPullQrCodeFromScan({ InScanData: jVarLocalScanId.value });
 
     let jVarLocalFromInsert = await DalSaveFunc({ inQrCode: jVarLocalQrCode });
-    console.log("jVarLocalFromInsert--------------- : ", jVarLocalFromInsert);
+
     if (jVarLocalFromInsert.KTF === false) {
         jVarLocalDangerAlertId.classList.remove("d-none");
         jVarLocalDangerAlertId.innerHTML = jVarLocalFromInsert.KReason;
@@ -90,7 +90,7 @@ let LocalPullQrCodeFromScan = ({ InScanData }) => {
     let LocalReturnValue;
 
     if (LocalScanAsArray.length > 0) {
-        LocalReturnValue = LocalScanAsArray[0]
+        LocalReturnValue = LocalScanAsArray[LocalScanAsArray.length - 1]
     };
 
     return LocalReturnValue;

@@ -8,11 +8,16 @@ let BillingShowFunc = async () => {
     let LocalSNo = 1;
 
     LocalReturnObject.KReason = LocalDataFromJson.KReason;
-    
+
     Object.entries(LocalDataFromJson.JsonData).forEach(
         ([key, value]) => {
             LocalReturnObject.JsonData[key] = value;
             LocalReturnObject.JsonData[key].SNo = LocalSNo;
+            LocalReturnObject.JsonData[key].OrderNo = value.OrderNo;
+            LocalReturnObject.JsonData[key].CustomerName = value.CustomerName;
+            LocalReturnObject.JsonData[key].Mobile = value.Mobile;
+            LocalReturnObject.JsonData[key].Amount = value.Amount;
+
             LocalSNo += 1;
         }
     );

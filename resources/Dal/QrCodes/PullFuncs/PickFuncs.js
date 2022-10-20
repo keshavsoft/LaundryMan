@@ -35,7 +35,7 @@ let FromBookingPk = async ({ inBookingPK }) => {
                 element.GarmentPcsTotal = LocalBookingData.ForQrCode.GarmentPcsTotal;
                 
                 element.GarmentsName = LocalBookingGarmentsData[element.GarmentsRef].Name;
-
+                element.GarmentsPcs = LocalBookingGarmentsData[element.GarmentsRef].Pcs;
             };
             element.CanvasId = `Canvas${element.QrCode}`
             return element;

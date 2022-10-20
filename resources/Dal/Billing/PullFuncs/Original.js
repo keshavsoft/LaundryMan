@@ -3,12 +3,16 @@ let StartFunc = async () => {
 
     let LocalReturnObject = { KTF: false, KResult: "", JsonData: {} };
 
-    let LocalData = await Neutralino.filesystem.readFile(`./KData/JSON/2017/${LocalJsonFileName}`);
-    let LocalDataAsJson = JSON.parse(LocalData);
-    //let LocalCollectionData = Object.keys(LocalDataAsJson).map(key => ({ key, value: LocalDataAsJson[key] }));
+    try {
+        let LocalData = await Neutralino.filesystem.readFile(`./KData/JSON/2017/${LocalJsonFileName}`);
+        let LocalDataAsJson = JSON.parse(LocalData);
 
-    LocalReturnObject.JsonData = LocalDataAsJson;
-    LocalReturnObject.KTF = true;
+        LocalReturnObject.JsonData = LocalDataAsJson;
+        LocalReturnObject.KTF = true;
+    } catch (error) {
+        console.log("error dal:Billing:PullFuncs:Original : ", error);
+        LocalReturnObject.KError = error;
+    };
 
     return await LocalReturnObject;
 };
