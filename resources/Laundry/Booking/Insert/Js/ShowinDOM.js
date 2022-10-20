@@ -3,7 +3,6 @@ import { ChangeClassFunc } from "../../../CommonFuncs/Header";
 import { BookingSaveFunc } from "../Js/SaveFuncs";
 import { BookingClear } from "../Js/ClearFunc";
 
-
 let ToKCont1 = async (inEvent) => {
     if ((inEvent === undefined) === false) {
         let jVarLocalCurrentTarget = inEvent.currentTarget;

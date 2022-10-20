@@ -6,7 +6,23 @@ import { StartFunc as PushFuncsStartFunc } from "../../../../Dal/Bookings/PushFu
 let CommonGarmentDetailsKeyName = "GarmentDetails";
 
 let BookingSaveFunc = async () => {
+    let jVarLocalReturnObject = { KTF: false, KResult: {} };
+
     //  LocalPreSaveFunc();
+    let jVarLocalFormVertical = document.getElementById("FormVertical");
+
+    jVarLocalFormVertical.classList.add('was-validated');
+   // jVarLocalFormVertical.classList.add('novalidate');
+
+    console.log("jVarLocalFormVertical.checkValidity() : ", jVarLocalFormVertical.checkValidity());
+
+    if (jVarLocalFormVertical.checkValidity() === false) {
+        console.log("ssssssss");
+        jVarLocalReturnObject.KReason = "Form not validated!";
+        return await jVarLocalReturnObject;
+    };
+
+
     let jVarLocalObject = {};
 
     let LocalBookingDetails = jFBookingDetails();
@@ -61,7 +77,7 @@ let BookingSaveFunc = async () => {
     // if (LocalGarmentsTotal.KTF) {
     //     jVarLocalObject.QrCodes[11] = LocalGarmentsTotal.KResult
     // };
-    
+
     let jVarLocalFromInsert = await PushFuncsStartFunc({ inDataToSave: jVarLocalObject });
     await LocalPostSaveFunc({ inFromSave: jVarLocalFromInsert });
 };
