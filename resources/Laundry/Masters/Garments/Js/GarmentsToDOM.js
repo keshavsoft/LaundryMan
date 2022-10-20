@@ -11,7 +11,7 @@ let GarmentsHeaderFunc = async () => {
 };
 
 let LocalAddListeners = () => {
-    let jVarLocalHomeId = document.getElementById("HomeId");
+    let jVarLocalHomeId = document.getElementById("MastersHeaderId");
     let jVarLocalGarmentsInsertHeaderId = document.getElementById("GarmentsInsertHeaderId");
     let jVarLocalGarmentsShowHeaderId = document.getElementById("GarmentsShowHeaderId");
 
