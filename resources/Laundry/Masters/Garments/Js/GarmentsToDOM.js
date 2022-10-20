@@ -1,5 +1,5 @@
 import { GarmentsHeaderHtmlFunc } from "../Js/HtmlFromTemplates";
-import { BuildMenuFunc } from "../../../Js/ShowinDOMHeader";
+import { BuildMastersMenuFunc } from "../../Js/MastersShowInDom";
 import { GarmentsInsertFunc } from "../Insert/Js/Insert";
 import { GarmentsShowFunc } from "../Show/Js/Show";
 
@@ -16,7 +16,7 @@ let LocalAddListeners = () => {
     let jVarLocalGarmentsShowHeaderId = document.getElementById("GarmentsShowHeaderId");
 
 
-    jVarLocalHomeId.addEventListener("click", BuildMenuFunc);
+    jVarLocalHomeId.addEventListener("click", BuildMastersMenuFunc);
     jVarLocalGarmentsInsertHeaderId.addEventListener("click", GarmentsInsertFunc);
     jVarLocalGarmentsShowHeaderId.addEventListener("click", GarmentsShowFunc);
 

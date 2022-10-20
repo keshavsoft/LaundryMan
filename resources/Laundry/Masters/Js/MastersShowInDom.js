@@ -1,9 +1,9 @@
 import { HeaderHtmlFunc as MastersHeaderHtmlFunc } from "./HtmlFuncs/HtmlFromTemplate";
-import { CustomersHeaderFunc } from "../Customers/Js/CustomersToDOM";
-import { CustomersInsertFunc } from "../Customers/Insert/Js/Insert";
 import { BuildMenuFunc } from "../../Js/ShowinDOMHeader";
+import { CustomersHeaderFunc } from "../Customers/Js/CustomersToDOM";
+import { CustomersShowFunc } from "../Customers/Show/Js/Show";
 import { GarmentsHeaderFunc } from "../Garments/Js/GarmentsToDOM";
-import { GarmentsInsertFunc } from "../Garments/Insert/Js/Insert";
+import { GarmentsShowFunc } from "../Garments/Show/Js/Show";
 
 let BuildMastersMenuFunc = async () => {
     let jVarLocalFromHbs = await MastersHeaderHtmlFunc();
@@ -40,12 +40,12 @@ let LocalFuncAddListeners = () => {
 
 let LocalFuncCustomers = async () => {
     CustomersHeaderFunc();
-    CustomersInsertFunc();
+    CustomersShowFunc();
 };
 
 let LocalFuncGarments = async () => {
     GarmentsHeaderFunc();
-    GarmentsInsertFunc();
+    GarmentsShowFunc();
 };
 
 
