@@ -2,7 +2,7 @@ import { HeaderHtmlFunc as MastersHeaderHtmlFunc } from "./HtmlFuncs/HtmlFromTem
 import { CustomersHeaderFunc } from "../Customers/Js/CustomersToDOM";
 import { CustomersInsertFunc } from "../Customers/Insert/Js/Insert";
 import { BuildMenuFunc } from "../../Js/ShowinDOMHeader";
-import { GarmentsHeaderHtmlFunc } from "../Garments/Js/HtmlFromTemplates";
+import { GarmentsHeaderFunc } from "../Garments/Js/GarmentsToDOM";
 import { GarmentsInsertFunc } from "../Garments/Insert/Js/Insert";
 
 let BuildMastersMenuFunc = async () => {
@@ -33,7 +33,7 @@ let LocalFuncAddListeners = () => {
 
     jVarLocalHomeId.addEventListener("click", BuildMenuFunc);
     jVarLocalMastersCustomersId.addEventListener("click", LocalFuncCustomers);
-    // jVarLocalMastersGarmentsId.addEventListener("click", LocalFuncGarments);
+    jVarLocalMastersGarmentsId.addEventListener("click", LocalFuncGarments);
 
 
 };
@@ -44,7 +44,7 @@ let LocalFuncCustomers = async () => {
 };
 
 let LocalFuncGarments = async () => {
-    GarmentsHeaderHtmlFunc();
+    GarmentsHeaderFunc();
     GarmentsInsertFunc();
 };
 

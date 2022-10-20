@@ -1,0 +1,26 @@
+<div class="table-responsive">
+
+    <table class="table fs-3 table-hover">
+        <thead>
+            <tr>
+                <th scope="col" width="5%">#</th>
+                <th scope="col" width="20%">Garment Name</th>
+                <th scope="col" width="25%">Garment Description</th>
+                <th scope="col" width="20%">Price</th>
+
+            </tr>
+        </thead>
+        <tbody id="KTableBody">
+
+            {{#each this}}
+            {{log "GarmentsShow" this}}
+            <tr>
+                <td>{{SNo}}</td>
+                <td>{{GarmentName}}</td>
+                <td>{{GarmentDescription}}</td>
+                <td>{{Price}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
