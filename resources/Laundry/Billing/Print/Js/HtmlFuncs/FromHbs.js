@@ -4,4 +4,13 @@ let BillPrintHtmlFunc = async () => {
     let data = await response.text();
     return await data;
 };
-export{ BillPrintHtmlFunc };
+
+let BillModalPopUpHtmlFunc = async () => {
+    let jVarLocalFetchUrl = "Laundry/Billing/Print/Html/Hbs/BillModalPopUp.html";
+    let response = await fetch(jVarLocalFetchUrl);
+    let data = await response.text();
+    return await data;
+};
+
+
+export { BillPrintHtmlFunc, BillModalPopUpHtmlFunc };

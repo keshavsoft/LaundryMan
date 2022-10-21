@@ -1,6 +1,7 @@
 import { ChangeClassFunc } from "../../../CommonFuncs/Header";
 import { BillPrintHtmlFunc } from "../Js/HtmlFuncs/FromHbs";
 import { BillingPrintFunc as BillPrintDalFunc } from "../../Print/Js/DalFunc";
+import { AddListeners } from "./BillToModal";
 
 let BillPrintShowFunc = async (inEvent) => {
     if ((inEvent === undefined) === false) {
@@ -28,6 +29,8 @@ let BillPrintShowFunc = async (inEvent) => {
 
     let jVarLocalSearchQrCodeTable = document.getElementById("SearchQrCodeTable");
     jVarLocalSearchQrCodeTable.focus();
+
+    AddListeners();
 };
 
 export { BillPrintShowFunc };
