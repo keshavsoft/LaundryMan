@@ -1,4 +1,5 @@
 import { StartFunc as QrCodesCheckQrCode } from "../../QrCodes/PullFuncs/CheckQrCode";
+import { StartFunc as DalQrCodesAndCompleted } from "../../Bookings/PullFuncs/QrCodesAndCompleted";
 
 let CommonFileName = "Billing.json";
 
@@ -7,7 +8,7 @@ let InsertFunc = async ({ inQrCode }) => {
 
     try {
         let LocalFromCheck = await LocalCheckBeforeSave({ inQrCode });
-        console.log("LocalFromCheck : ", LocalFromCheck);
+
         if (LocalFromCheck.KTF === false) {
             LocalReturnObject.KReason = LocalFromCheck.KReason;
             return await LocalReturnObject;
@@ -21,39 +22,6 @@ let InsertFunc = async ({ inQrCode }) => {
         };
 
         let LocalFromWriteFile = await Neutralino.filesystem.writeFile(`./KData/JSON/2017/${CommonFileName}`, JSON.stringify(LocalDataAsJson));
-
-        if (LocalFromWriteFile.success) {
-            LocalReturnObject.KResult = `${inQrCode} saved successfully...`;
-            LocalReturnObject.KTF = true;
-        };
-
-        return await LocalReturnObject;
-    } catch (error) {
-        console.log("error InsertFunc : ", error);
-    };
-
-    return await LocalReturnObject;
-};
-
-let InsertFunc_old = async ({ inQrCode }) => {
-    let LocalReturnObject = { KTF: false, KResult: "" };
-
-    try {
-        let LocalJsonFileName = "Completed.json";
-
-        let LocalData = await Neutralino.filesystem.readFile(`./KData/JSON/2017/${LocalJsonFileName}`);
-        let LocalDataAsJson = JSON.parse(LocalData);
-
-        if (inQrCode in LocalDataAsJson) {
-            LocalReturnObject.KReason = `${inQrCode} is already scanned!`;
-            return await LocalReturnObject;
-        };
-
-        LocalDataAsJson[inQrCode] = {
-            DateTime: LocalGetDate()
-        };
-
-        let LocalFromWriteFile = await Neutralino.filesystem.writeFile(`./KData/JSON/2017/${LocalJsonFileName}`, JSON.stringify(LocalDataAsJson));
 
         if (LocalFromWriteFile.success) {
             LocalReturnObject.KResult = `${inQrCode} saved successfully...`;
@@ -87,6 +55,23 @@ let LocalCheckBeforeSave = async ({ inQrCode }) => {
             return await LocalReturnObject;
         };
 
+        let LocalFromDalQrCodesAndCompleted = await DalQrCodesAndCompleted();
+
+        if (LocalFromDalQrCodesAndCompleted.KTF === false) {
+            LocalReturnObject.KReason = LocalFromDalQrCodesAndCompleted.KReason;
+            return await LocalReturnObject;
+        };
+
+        if ((inQrCode in LocalFromDalQrCodesAndCompleted.JsonData) === false) {
+            LocalReturnObject.KReason = `${inQrCode}: error inside Dal/Billing/PushFuncs/StartFunc`;
+            return await LocalReturnObject;
+        };
+
+        if ((LocalFromDalQrCodesAndCompleted[inQrCode].QrCodesCompleted === 0) === false) {
+            LocalReturnObject.KReason = `${inQrCode}: completed : ${LocalFromDalQrCodesAndCompleted[inQrCode].QrCodesCompleted}: error!`;
+            return await LocalReturnObject;
+        };
+
         LocalReturnObject.KTF = true;
 
         return await LocalReturnObject;
@@ -109,6 +94,5 @@ let LocalGetDate = () => {
 
     return `${dd}-${MM}-${yyyy}-${HH}-${mm}-${ss}`;
 };
-
 
 export { InsertFunc }
