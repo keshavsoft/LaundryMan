@@ -5,23 +5,76 @@ import { StartFunc as PushFuncsStartFunc } from "../../../../Dal/Bookings/PushFu
 
 let CommonGarmentDetailsKeyName = "GarmentDetails";
 
-let BookingSaveFunc = async () => {
+let jFCheckBeforeSave = async () => {
     let jVarLocalReturnObject = { KTF: false, KResult: {} };
 
-    //  LocalPreSaveFunc();
+    let jVarLocalGarmentsTotalPcs = document.getElementById("GarmentsTotalPcs");
+
+    let jVarLocalTotalGarmnetsPcs = TotalGarmentsPcsFunc();
+    jVarLocalGarmentsTotalPcs.value = jVarLocalTotalGarmnetsPcs;
+
+    let jvarLocalFromjFFormVerticalValidate = await jFFormVerticalValidate();
+
+    if (jvarLocalFromjFFormVerticalValidate.KTF === false) {
+        jVarLocalReturnObject.KReason = jvarLocalFromjFFormVerticalValidate.KReason;
+        return await jVarLocalReturnObject;
+    };
+
+    let jvarLocaljFFormForGarmentsValidate = await jFFormForGarmentsValidate();
+
+    if (jvarLocaljFFormForGarmentsValidate.KTF === false) {
+        jVarLocalReturnObject.KReason = jvarLocaljFFormForGarmentsValidate.KReason;
+        return await jVarLocalReturnObject;
+    };
+
+    jVarLocalReturnObject.KTF = true;
+    return await jVarLocalReturnObject;
+
+};
+
+let jFFormVerticalValidate = async () => {
+    let jVarLocalReturnObject = { KTF: false, KResult: {} };
+
     let jVarLocalFormVertical = document.getElementById("FormVertical");
 
     jVarLocalFormVertical.classList.add('was-validated');
-   // jVarLocalFormVertical.classList.add('novalidate');
-
-    console.log("jVarLocalFormVertical.checkValidity() : ", jVarLocalFormVertical.checkValidity());
 
     if (jVarLocalFormVertical.checkValidity() === false) {
-        console.log("ssssssss");
         jVarLocalReturnObject.KReason = "Form not validated!";
         return await jVarLocalReturnObject;
     };
 
+    jVarLocalReturnObject.KTF = true;
+    return await jVarLocalReturnObject;
+
+};
+
+let jFFormForGarmentsValidate = async () => {
+    let jVarLocalReturnObject = { KTF: false, KResult: {} };
+
+    let jVarLocalFormForGarments = document.getElementById("FormForGarments");
+
+    jVarLocalFormForGarments.classList.add('was-validated');
+
+    if (jVarLocalFormForGarments.checkValidity() === false) {
+        jVarLocalReturnObject.KReason = "Form not validated!";
+        return await jVarLocalReturnObject;
+    };
+
+    jVarLocalReturnObject.KTF = true;
+    return await jVarLocalReturnObject;
+
+};
+
+let BookingSaveFunc = async () => {
+    let jVarLocalReturnObject = { KTF: false, KResult: {} };
+    let jVarLocalFromjFCheckBeforeSave = await jFCheckBeforeSave();
+    //  LocalPreSaveFunc();
+
+    if (jVarLocalFromjFCheckBeforeSave.KTF === false) {
+        jVarLocalReturnObject.KReason = jVarLocalFromjFCheckBeforeSave.KReason;
+        return await jVarLocalReturnObject;
+    };
 
     let jVarLocalObject = {};
 
@@ -129,8 +182,6 @@ let jFBookingDetails = () => {
     let jVarLocalGarmentsTotalPcs = document.getElementById("GarmentsTotalPcs");
     let jVarLocalWeight = document.getElementById("Weight");
     let jvarLocalAmount = document.getElementById("Amount");
-    let jVarLocalTotalGarmnetsPcs = TotalGarmentsPcsFunc();
-    jVarLocalGarmentsTotalPcs.value = jVarLocalTotalGarmnetsPcs;
     // console.log("jVarLocalTotalGarmnetsPcs:", jVarLocalTotalGarmnetsPcs);
     jVarLocalReturnObject.KTF = true;
 
