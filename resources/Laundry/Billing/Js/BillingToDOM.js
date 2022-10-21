@@ -2,6 +2,7 @@ import { BillingHeaderHtmlFunc } from "./HtmlFromTemplates";
 import { BuildMenuFunc } from "../../Js/ShowinDOMHeader";
 import { BillingShow } from "../Show/Js/BillingShowFunc";
 import { BillingScanHeaderId } from "../Scan/Js/ScanFuncs";
+import { BillPrintShowFunc } from "../Print/Js/BillingPrint";
 
 let BillingHeaderFunc = async () => {
     let jVarLocalFromHbs = await BillingHeaderHtmlFunc();
@@ -24,5 +25,9 @@ let LocalFuncAddListeners = () => {
     let jVarLocalBillingScanHeaderId = document.getElementById("BillingScanHeaderId");
 
     jVarLocalBillingScanHeaderId.addEventListener("click", BillingScanHeaderId);
+
+    let jVarLocalBillingPrintHeaderId = document.getElementById("BillingPrintHeaderId");
+
+    jVarLocalBillingPrintHeaderId.addEventListener("click", BillPrintShowFunc);
 };
 export{BillingHeaderFunc};
