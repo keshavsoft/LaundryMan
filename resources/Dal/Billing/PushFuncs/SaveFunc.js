@@ -67,8 +67,10 @@ let LocalCheckBeforeSave = async ({ inQrCode }) => {
             return await LocalReturnObject;
         };
 
-        if ((LocalFromDalQrCodesAndCompleted[inQrCode].QrCodesCompleted === 0) === false) {
-            LocalReturnObject.KReason = `${inQrCode}: completed : ${LocalFromDalQrCodesAndCompleted[inQrCode].QrCodesCompleted}: error!`;
+        console.log("pppppppp : ", LocalFromDalQrCodesAndCompleted.JsonData[inQrCode]);
+
+        if ((LocalFromDalQrCodesAndCompleted.JsonData[inQrCode].QrCodesInProcess === 0) === false) {
+            LocalReturnObject.KReason = `${inQrCode}: completed : ${LocalFromDalQrCodesAndCompleted.JsonData[inQrCode].QrCodesCompleted}: error!`;
             return await LocalReturnObject;
         };
 
