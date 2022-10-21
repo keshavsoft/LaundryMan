@@ -48,14 +48,19 @@ let ToModal = async ({ inRowPK }) => {
 };
 
 let AddListeners = () => {
-    let jVarLocalQrCodeButtonClass = document.getElementsByClassName("QrCodeButtonClass");
+    let jVarLocalQrCodeButtonClass = document.getElementsByClassName("BillButtonClass");
     console.log("jVarLocalQrCodeButtonClass : ", jVarLocalQrCodeButtonClass);
     for (var i = 0; i < jVarLocalQrCodeButtonClass.length; i++) {
         jVarLocalQrCodeButtonClass[i].addEventListener('click', async (inEvent) => {
+            // let jVarInsideCurrentTarget = inEvent.currentTarget;
+            // let jVarInsideClosestTr = jVarInsideCurrentTarget.closest("tr");
+            // let jVarInsideQrCodeValue = jVarInsideClosestTr.dataset.qrcode;
+
             let jVarInsideCurrentTarget = inEvent.currentTarget;
-            let jVarInsideClosestTr = jVarInsideCurrentTarget.closest("tr");
-            let jVarInsideQrCodeValue = jVarInsideClosestTr.dataset.qrcode;
-            ToModal({ inRowPK: jVarInsideQrCodeValue });
+            let jVarInsideQrCodeValue = jVarInsideCurrentTarget.dataset.qrcode;
+            console.log("jVarInsideQrCodeValue  : ", jVarInsideQrCodeValue);
+
+            //    ToModal({ inRowPK: jVarInsideQrCodeValue });
         });
     };
 };
