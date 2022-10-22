@@ -1,6 +1,5 @@
 import { HeaderHtmlFunc } from "./HtmlFuncs/FromTemplates";
-import { ToHeaderFunc as BookingInsertToDOMHeader } from "../Booking/Js/InsertToDOM";
-import { ToKCont1 as BookingInsertToDOMBody } from "../Booking/Insert/Js/ShowinDOM";
+import { ToHeaderFunc as BookingTodayToDOMHeader } from "../Booking/Js/TodayToDOM";
 import { CompletedHeaderFunc } from "../Completed/Js/CompletedToDom";
 import { CompletedShow } from "../Completed/Show/Js/Show";
 import { BillingHeaderFunc } from "../Billing/Js/BillingToDOM";
@@ -8,7 +7,6 @@ import { BillingShow } from "../Billing/Show/Js/BillingShowFunc";
 import { QrCodeShowHeaderFunc } from "../QrCode/Js/QrCodeToDOM";
 import { QrcodeShow } from "../QrCode/Show/Js/Show";
 import { ToHeaderFunc as MastersToDOMHeader} from "../Masters/Js/MastersToDOM";
-import { CustomersHeaderFunc } from "../Masters/Customers/Js/CustomersToDOM";
 
 let BuildMenuFunc = async () => {
     let jVarLocalFromHbs = await HeaderHtmlFunc();
@@ -51,8 +49,7 @@ let LocalFuncAddListener = () => {
 };
 
 let LocalFuncBooking = async () => {
-    BookingInsertToDOMHeader();
-    BookingInsertToDOMBody();
+    BookingTodayToDOMHeader();
 };
 
 let LocalFuncMasters = async () => {
