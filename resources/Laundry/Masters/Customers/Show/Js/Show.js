@@ -1,7 +1,6 @@
 import { CustomersShowHtmlFunc } from "./HtmlFuns/FromHbs";
 import { ChangeClassFunc } from "../../../../CommonFuncs/Header";
-import { ShowFunc as CustomersShowDalFunc } from "../../../../../Dal/Customers/Show";
-
+import { ShowDalFunc as CustomerShowDalFunc } from "./DalFuncs";
 let CustomersShowFunc = async (inEvent) => {
     if ((inEvent === undefined) === false) {
         let jVarLocalCurrentTarget = inEvent.currentTarget;
@@ -12,7 +11,7 @@ let CustomersShowFunc = async (inEvent) => {
 
     var template = Handlebars.compile(jVarLocalFromTemplate);
 
-    let jVarLocalDataNeeded = await CustomersShowDalFunc();
+    let jVarLocalDataNeeded = await CustomerShowDalFunc();
 
     if (jVarLocalDataNeeded.KTF === false) {
 
