@@ -4,15 +4,13 @@
             <div class="card-body">
 
                 <form id="FormVertical" onsubmit="return false;">
-                    <div class="row">
+                    <div class="mb-3 position-relative">
+                        <label class="col-form-label fs-2">Customer Name</label>
                         <div class="col">
-                            <label class="col-form-label fs-2">Customer Name</label>
-                            <div class="col">
-                                <input type="text" class="form-control fs-2" name="CustomerName" id="CustomerName"
-                                    aria-describedby="emailHelp" required>
-                                <div class="invalid-feedback">
-                                    Should not be empty!
-                                </div>
+                            <input type="text" class="form-control fs-2" name="CustomerName" id="CustomerName"
+                                aria-describedby="emailHelp" required>
+                            <div class="invalid-tooltip">
+                                Please Enter Customer Name.
                             </div>
                         </div>
                     </div>
@@ -22,22 +20,17 @@
                             required>
 
                         <div class="invalid-tooltip">
-                            Please choose a unique and valid username.
+                            Please Enter Mobile Number.
                         </div>
-
                     </div>
-
-                    <div class="row">
+                    <div class="mb-3 position-relative">
+                        <label class="col-form-label fs-2">GarmentsTotalPcs</label>
                         <div class="col">
-                            <label class="col-form-label fs-2">GarmentsTotalPcs</label>
-                            <div class="col">
-                                <input type="number" class="form-control fs-2" id="GarmentsTotalPcs"
-                                    aria-describedby="emailHelp" required>
-                                <div class="invalid-feedback">
-                                    Should not be empty!
-                                </div>
+                            <input type="number" class="form-control fs-2" id="GarmentsTotalPcs"
+                                aria-describedby="emailHelp" required>
+                            <div class="invalid-tooltip">
+                                Please Enter Total Garments.
                             </div>
-
                         </div>
                     </div>
                     <div class="row">
@@ -69,7 +62,6 @@
 
                     </div>
 
-
                 </form>
             </div>
             <div class="card-footer text-muted">
@@ -96,17 +88,24 @@
                     <div class="row">
                         <div class="col-1 fs-2">1</div>
                         <div class="col-8">
-                            <div class="mb-3">
+                            <div class="mb-3 position-relative">
                                 <input type="text" class="form-control fs-2" id="Garments1" aria-describedby="helpId"
                                     placeholder="" required>
+                                <div class="invalid-tooltip">
+                                    Please Enter Garment Name.
+                                </div>
                             </div>
                         </div>
+
                         <div class="col-3">
-
-                            <input type="number" min="1" max="99" class="form-control fs-2" id="Pcs1"
-                                aria-describedby="helpId" placeholder="" required>
+                            <div class="mb-3 position-relative">
+                                <input type="number" min="1" max="99" class="form-control fs-2" id="Pcs1"
+                                    aria-describedby="helpId" placeholder="" required>
+                                <div class="invalid-tooltip">
+                                    Please Enter No Of Pieces.
+                                </div>
+                            </div>
                         </div>
-
                     </div>
                     <div class="row">
                         <div class="col-1 fs-2">2</div>
