@@ -2,6 +2,8 @@ import { HeaderHtmlFunc as BookingsHeaderHtmlFunc } from "./HtmlFromTemplate";
 import { BuildMenuFunc } from "../../Js/ShowinDOMHeader";
 import { ToHeaderFunc } from "../Today/Js/InsertToDOM";
 import { ToKCont1 } from "../Today/Insert/Js/ShowinDOM";
+import { ToHeaderFunc as ShowAllHeaderFunc } from "../ShowAll/Js/InsertToDOM";
+import { ToKCont1 as ShowAllDOMFunc } from "../ShowAll/Insert/Js/ShowinDOM";
 
 let BuildBookingMenuFunc = async () => {
     let jVarLocalFromHbs = await BookingsHeaderHtmlFunc();
@@ -26,12 +28,12 @@ let BuildMenuWithHeaderOnlyFunc = async () => {
 
 let LocalFuncAddListeners = () => {
     let jVarLocalHomeId = document.getElementById("HomeId");
-    let jVarLocalMastersCustomersId = document.getElementById("BookingTodayHeaderId");
-    let jVarLocalMastersGarmentsId = document.getElementById("MastersGarmentsId");
+    let jVarLocalBookingTodayHeaderId = document.getElementById("BookingTodayHeaderId");
+    let jVarLocalBookingShowAllHeaderId = document.getElementById("BookingShowAllHeaderId");
 
     jVarLocalHomeId.addEventListener("click", BuildMenuFunc);
-    jVarLocalMastersCustomersId.addEventListener("click", LocalFuncToday);
-    // jVarLocalMastersGarmentsId.addEventListener("click", LocalFuncGarments);
+    jVarLocalBookingTodayHeaderId.addEventListener("click", LocalFuncToday);
+    jVarLocalBookingShowAllHeaderId.addEventListener("click", LocalFuncShowAll);
 
 
 };
@@ -41,9 +43,9 @@ let LocalFuncToday = async () => {
     ToKCont1();
 };
 
-let LocalFuncGarments = async () => {
-    GarmentsHeaderFunc();
-    GarmentsShowFunc();
+let LocalFuncShowAll = async () => {
+    ShowAllHeaderFunc();
+    ShowAllDOMFunc();
 };
 
 

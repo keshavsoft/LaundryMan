@@ -1,5 +1,6 @@
 import { StartFunc as MaxPkFunc } from "../FuncsForPk/MaxPk";
 import { FromBooking as QrCodesStartFunc } from "../../QrCodes/PushFuncs/SaveFunc";
+import _ from "../../../js/lodash";
 
 let StartFunc = async ({ inDataToSave = {} }) => {
     let LocalReturnObject = { KTF: false, KResult: "" };
