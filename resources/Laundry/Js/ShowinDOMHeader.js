@@ -1,5 +1,5 @@
 import { HeaderHtmlFunc } from "./HtmlFuncs/FromTemplates";
-import { ToHeaderFunc as BookingTodayToDOMHeader } from "../Booking/Js/TodayToDOM";
+import { TodayHeaderFunc as BookingTodayToDOMHeader } from "../Booking/Js/TodayToDOM";
 import { CompletedHeaderFunc } from "../Completed/Js/CompletedToDom";
 import { CompletedShow } from "../Completed/Show/Js/Show";
 import { BillingHeaderFunc } from "../Billing/Js/BillingToDOM";
