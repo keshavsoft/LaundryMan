@@ -1,16 +1,17 @@
-//import { StartFunc as DalQrCodesAsObject } from "../../../../Dal/Bookings/PullFuncs/QrCodesAsObject";
 import { StartFunc as DalQrCodesAndCompleted } from "../../../../../Dal/Bookings/PullFuncs/QrCodesAndCompleted";
+import { StartFunc as DalQrCodesCompletedBilled } from "../../../../../Dal/Bookings/PullFuncs/QrCodesCompletedBilled";
 
 let ShowAll = async () => {
     let LocalReturnObject = { KTF: false, KResult: "", JsonData: {} };
 
-    let LocalDataFromJson = await DalQrCodesAndCompleted();
+    let LocalDataFromJson = await DalQrCodesCompletedBilled();
     let LocalSNo = 1;
 
     LocalReturnObject.KReason = LocalDataFromJson.KReason;
 
     Object.entries(LocalDataFromJson.JsonData).forEach(
         ([key, value]) => {
+            console.log("value : ", value);
             LocalReturnObject.JsonData[key] = {
                 SNo: LocalSNo,
                 OrderNo: key,
@@ -18,7 +19,8 @@ let ShowAll = async () => {
                 Mobile: value.Mobile,
                 QrCodesTotal: value.QrCodesTotal,
                 QrCodesCompleted: value.QrCodesCompleted,
-                QrCodesInProcess: value.QrCodesInProcess
+                QrCodesInProcess: value.QrCodesInProcess,
+                Billed: value.Billed
             };
 
             LocalSNo += 1;
