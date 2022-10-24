@@ -46,8 +46,8 @@
                     <td style="text-align:right">{{ShowInIndianDateFormat Amount}}</td>
 
                     {{#if Billed}}
-                    <td><button type="button" href="#" class="btn btn-primary OrderButtonClass fs-4"
-                            data-orderno="{{OrderNo}}">
+                    <td><button type="button" href="#" class="btn btn-primary BillButtonClass fs-4"
+                            data-billno="{{OrderNo}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                 class="bi bi-book" viewBox="0 0 16 16">
                                 <path
@@ -62,26 +62,46 @@
         </table>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="ModalForQrCode" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">QrCodes</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="ModalBody">
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="printJS('ModalBody', 'html')">Print</button>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="card-footer text-muted">
 
         Footer
 
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="ModalForQrCode" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">QrCodes</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="ModalBody">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="printJS('ModalBody', 'html')">Print</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="ModalForBilling" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Bill</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="BillingModalBody">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="printJS('BillingModalBody', 'html')">Print</button>
+            </div>
+        </div>
     </div>
 </div>

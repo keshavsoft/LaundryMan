@@ -1,7 +1,7 @@
 import { DashBoardHtmlFunc } from "../Js/HtmlFuncs/FromHbs";
 import { ShowAll as DalShowAll } from "./Dalfuncs";
 import { ChangeClassFunc } from "../../../../CommonFuncs/Header";
-//import { AddListeners } from "./QrCodeToModal";
+import { AddlistenersFunc } from "./ListenerFuncs";
 import { ToDOMBodyFromPK as FindBookingToDOMBodyFromPK } from "../../FindBooking/Js/FindBooking";
 
 let DashBoardShow = async (inEvent) => {
@@ -26,8 +26,7 @@ let DashBoardShow = async (inEvent) => {
 
     document.getElementById("KCont1").innerHTML = jVarLocalHtml;
 
-    LocalAddlistener();
-
+    AddlistenersFunc();
 };
 
 let LocalAddlistener = () => {

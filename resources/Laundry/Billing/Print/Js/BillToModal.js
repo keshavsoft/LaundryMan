@@ -4,10 +4,14 @@ import { FromPk as DalFromPk } from "../../../../Dal/Bookings/PullFuncs/PickFunc
 let ToModal = async ({ inBookingPK }) => {
     //  let jVarLocalDataNeeded = await PickFuncForQrCode({ inRowPK });
     let jVarLocalDataNeeded = await DalFromPk({ inRowPK: inBookingPK });
-    console.log("jVarLocalDataNeeded : ", jVarLocalDataNeeded, inBookingPK);
+
     try {
         if (jVarLocalDataNeeded.KTF) {
-            let jVarLocalModalBody = document.getElementById("ModalBody");
+            let jVarLocalId = "ModalForBilling";
+            let jVarLocalModalForBilling = document.getElementById(jVarLocalId);
+
+            //let jVarLocalModalBody = document.getElementById("ModalBody");
+            let jVarLocalModalBody = jVarLocalModalForBilling.querySelector(".modal-body");
 
             let jVarLocalFromTemplate = await BillModalPopUpHtmlFunc();
 
@@ -16,9 +20,7 @@ let ToModal = async ({ inBookingPK }) => {
 
             jVarLocalModalBody.innerHTML = template(LocalQrCodesData);
 
-            let jVarLocalId = "ModalForBilling";
-
-            var myModal = new bootstrap.Modal(document.getElementById(jVarLocalId), { keyboard: true, focus: true });
+            var myModal = new bootstrap.Modal(jVarLocalModalForBilling, { keyboard: true, focus: true });
 
             myModal.show();
         };
