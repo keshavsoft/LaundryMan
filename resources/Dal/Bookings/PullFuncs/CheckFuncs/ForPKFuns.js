@@ -1,8 +1,8 @@
-import { StartFunc } from "../Original";
+import { StartFunc as OriginalStartFunc } from "../Original";
 
 let StartFunc = async ({ inBookingPK }) => {
     let LocalReturnObject = { KTF: false, KResult: "", JsonData: {} };
-    let LocalFromStartFunc = await StartFunc();
+    let LocalFromStartFunc = await OriginalStartFunc();
 
     if (LocalFromStartFunc.KTF === false) {
         LocalReturnObject.KReason = LocalFromStartFunc.KReason;

@@ -45,7 +45,7 @@ let LocaljFHeaderSearchInputKeyPress = async (event) => {
 
         jVarLocalCurrentTarget.value = "";
 
-        console.log("1111111111 : ", jVarLocalCurrentTarget.value, jVarLoalFromDalBillingStartFunc);
+       // console.log("1111111111 : ", jVarLocalCurrentTarget.value, jVarLoalFromDalBillingStartFunc);
     };
 };
 
