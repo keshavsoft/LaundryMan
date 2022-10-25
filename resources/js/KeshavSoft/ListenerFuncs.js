@@ -1,20 +1,13 @@
-import { StartFunc as DalBillingStartFunc } from "../../Dal/Billing/PullFuncs/Original";
-//import { ToDOMBodyFromPK as FindBookingToDOMBodyFromPK } from "../../FindBooking/Js/FindBooking";
+import { StartFunc as DalCompletedForPKFunsStartFunc } from "../../Dal/Completed/PullFuncs/CheckFuncs/ForPKFuns";
+import { StartFunc as CheckFunsStartFunc } from "./CheckFuns";
+import { ShowWithInputValue } from "../../Laundry/Completed/Scan/Js/ShowInDomBody";
 import { ToDOMBodyFromPKAndQrCode as FindBookingToDOMBodyFromPKAndQrCode } from "../../Laundry/Booking/Today/FindBooking/Js/FindBooking";
-import { StartFunc as DalForPKFunsStartFunc } from "../../Dal/Bookings/PullFuncs/CheckFuncs/ForPKFuns";
 
 let AddlistenersFunc = () => {
     let jVarLocalMainHeaderSearchId = document.getElementById("MainHeaderSearchId");
 
     jVarLocalMainHeaderSearchId.addEventListener('keypress', LocaljFHeaderSearchInputKeyPress);
-
-    // jVarLocalTableButtons.forEach(function (element) {
-    //     // element refers to the DOM node
-    //     element.addEventListener('click', LocalTableButtonFunc);
-    // });
-
 };
-
 
 let LocaljFHeaderSearchInputKeyPress = async (event) => {
     if (event.key === 'Enter') { // key code of the keybord key
@@ -24,26 +17,30 @@ let LocaljFHeaderSearchInputKeyPress = async (event) => {
         let jVarLocalBookingPK = LocalScanAsArray[LocalScanAsArray.length - 1];
         let jVarLocalQrCode = LocalScanAsArray[0];
 
-        let jVarLoalFromDalForPKFunsStartFunc = await DalForPKFunsStartFunc({ inBookingPK: jVarLocalBookingPK });
+        let jVarLocalFromCheckFunsStartFunc = await CheckFunsStartFunc({
+            inBookingPK: jVarLocalBookingPK,
+            inQrCode: jVarLocalQrCode
+        });
 
-        if (jVarLoalFromDalForPKFunsStartFunc.KTF === false) {
-            console.log("jVarLoalFromDalForPKFunsStartFunc : ", jVarLoalFromDalForPKFunsStartFunc.KReason);
+        if (jVarLocalFromCheckFunsStartFunc.KTF === false) {
+            console.log("jVarLoalFromDalForPKFunsStartFunc : ", jVarLocalFromCheckFunsStartFunc.KReason);
             return;
         };
 
-        let jVarLoalFromDalBillingStartFunc = await DalBillingStartFunc();
+        let jVarLoalFromDalCompletedForPKFunsStartFunc = await DalCompletedForPKFunsStartFunc({ inQrCode: jVarLocalQrCode });
 
-        if (jVarLoalFromDalBillingStartFunc.KTF === false) {
-            LocalReturnObject.KReason = jVarLoalFromDalBillingStartFunc.KReason;
-            return await LocalReturnObject;
+        if (jVarLoalFromDalCompletedForPKFunsStartFunc.KTF === false) {
+            await ShowWithInputValue({ inToShowValue: jVarLocalCurrentTarget.value });
         };
+
+        //        console.log("jVarLoalFromDalBillingForPKFunsStartFunc --------: ", jVarLoalFromDalBillingForPKFunsStartFunc);
 
         await FindBookingToDOMBodyFromPKAndQrCode({
             inBookingPK: jVarLocalBookingPK,
             inQrCode: jVarLocalQrCode
         });
 
-        jVarLocalCurrentTarget.value = "";
+        // jVarLocalCurrentTarget.value = "";
 
         // console.log("1111111111 : ", jVarLocalCurrentTarget.value, jVarLoalFromDalBillingStartFunc);
     };
