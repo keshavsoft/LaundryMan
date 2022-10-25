@@ -46,18 +46,29 @@ let ToDOMBodyFromPK = async ({ inBookingPK }) => {
     LocalSetFocusFunc();
 };
 
+let ToDOMBodyFromPKAndQrCode = async ({ inBookingPK, inQrCode }) => {
+    console.log("inQrCode ---------- : ", inQrCode);
+    let jVarLocalFindBookingHeaderId = document.getElementById("FindBookingHeaderId");
+    ChangeClassFunc({ inHtmlControl: jVarLocalFindBookingHeaderId });
+
+    let jVarLocalFromHbs = await FindBookingtHtmlFunc();
+
+    let jVarLocalKCont1 = document.getElementById("KCont1");
+
+    var template = Handlebars.compile(jVarLocalFromHbs);
+    let jVarLocalDataToShow = await DalFromPkWithQrCodeObject({ inRowPK: inBookingPK });
+
+    if (jVarLocalDataToShow.KTF) {
+        jVarLocalKCont1.innerHTML = template(jVarLocalDataToShow.ForQrCode);
+    };
+
+    // LocalFuncAddListeners();
+    LocalSetFocusFunc();
+};
+
 let LocalSetFocusFunc = () => {
     let jVarLocalCustomerName = document.getElementById("CustomerName");
     jVarLocalCustomerName.focus();
 };
 
-// let LocalFuncAddListeners = () => {
-//     let jVarLocalBookingSaveButtonId = document.getElementById("BookingSaveButtonId");
-
-//     jVarLocalBookingSaveButtonId.addEventListener("click", BookingSaveFunc);
-//     jVarLocalBookingSaveButtonId.addEventListener("click", BookingClear );
-
-// };
-
-
-export { FindBookingFunc, ToDOMBodyFromPK };
+export { FindBookingFunc, ToDOMBodyFromPK, ToDOMBodyFromPKAndQrCode };
