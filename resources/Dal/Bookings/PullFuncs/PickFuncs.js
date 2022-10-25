@@ -68,7 +68,7 @@ let FromPkWithQrCodeObject = async ({ inRowPK }) => {
     };
 
     let LocalQrCodesNeeded = _.filter(LocalFromQrCodesStartFunc.JsonData, { BookingRef: inRowPK });
-    let LocalKeyNeeded = ["GarmentsRef", "GarmentName"];
+    let LocalKeyNeeded = ["GarmentsRef", "GarmentName", "QrCode"];
 
     let LocalQrCodesNeededWithKeys = _.map(LocalQrCodesNeeded, LoopItem => _.pick(LoopItem, LocalKeyNeeded));
     LocalReturnObject.ForQrCode.QrCodesArray = LocalQrCodesNeededWithKeys;
