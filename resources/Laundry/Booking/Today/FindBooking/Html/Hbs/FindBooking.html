@@ -281,18 +281,20 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">BookingRef</th>
-                                <th scope="col">GarmentsRef</th>
+                                <th scope="col">Garment Name</th>
+                                <th scope="col">Garments Ref</th>
+                                <th scope="col">QrCode</th>
                             </tr>
                         </thead>
                         <tbody id="KTableBody">
-                            {{#each this}}
+                            {{#each QrCodesArray}}
                             <tr>
-                                <!-- <td>{{SNo}}</td>
-                                <td>{{BookingRef}}</td>
+                                <td>{{SNo}}</td>
+                                <td>{{GarmentName}}</td>
                                 <td>{{GarmentsRef}}</td>
+                                <td>{{QrCode}}</td>
 
-                                <td>{{key}}</td>-->
+                                <td>{{key}}</td>
                             </tr>
                             {{/each}}
                             
