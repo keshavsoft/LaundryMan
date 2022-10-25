@@ -3,7 +3,7 @@ import { ChangeClassFunc } from "../../../../CommonFuncs/Header";
 // import { BookingSaveFunc } from "../Js/SaveFuncs";
 // import { BookingClear } from "../Js/ClearFunc";
 import { LastBooking } from "../../../../../Dal/Bookings/Pick";
-import { LastPkData, FromPk as BookingFromPK } from "../../../../../Dal/Bookings/PullFuncs/PickFuncs";
+import { LastPkData, FromPkWithQrCodeObject as DalFromPkWithQrCodeObject } from "../../../../../Dal/Bookings/PullFuncs/PickFuncs";
 
 let FindBookingFunc = async (inEvent) => {
     if ((inEvent === undefined) === false) {
@@ -35,12 +35,10 @@ let ToDOMBodyFromPK = async ({ inBookingPK }) => {
     let jVarLocalKCont1 = document.getElementById("KCont1");
 
     var template = Handlebars.compile(jVarLocalFromHbs);
-    let jVarLocalDataToShow = await BookingFromPK({ inRowPK: inBookingPK });
+    let jVarLocalDataToShow = await DalFromPkWithQrCodeObject({ inRowPK: inBookingPK });
 
     if (jVarLocalDataToShow.KTF) {
-
-        jVarLocalKCont1.innerHTML = template(jVarLocalDataToShow.KResult);
-
+        jVarLocalKCont1.innerHTML = template(jVarLocalDataToShow.ForQrCode);
     };
 
     // LocalFuncAddListeners();

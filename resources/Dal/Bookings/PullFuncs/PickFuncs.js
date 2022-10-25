@@ -1,4 +1,6 @@
 import { StartFunc as FuncsForPkStartFunc } from "../FuncsForPk/Start";
+import { StartFunc as QrCodesStartFunc } from "../../QrCodes/PullFuncs/Original";
+import _ from "../../../js/lodash";
 
 let FromPk = async ({ inRowPK }) => {
     let LocalJsonFileName = "Bookings.json";
@@ -44,6 +46,32 @@ let FromPkForQrCodes = async ({ inRowPK }) => {
     return await LocalReturnObject;
 };
 
+let FromPkWithQrCodeObject = async ({ inRowPK }) => {
+    let LocalReturnObject = { KTF: false, KResult: "" };
+    let LocalFromOriginalData = await FromPk({ inRowPK });
+
+    if (LocalFromOriginalData.KTF === false) {
+        LocalReturnObject.KReason = LocalFromOriginalData.KReason;
+        return await LocalReturnObject;
+    };
+
+    LocalReturnObject.KTF = true;
+    LocalReturnObject.ForQrCode = LocalFromOriginalData.KResult;
+
+    let LocalFromQrCodesStartFunc = await QrCodesStartFunc();
+
+    if (LocalFromQrCodesStartFunc.KTF === false) {
+        LocalReturnObject.KReason = LocalFromQrCodesStartFunc.KReason;
+        return await LocalReturnObject;
+    };
+
+    let LocalQrCodesNeeded = _.filter(LocalFromQrCodesStartFunc.JsonData, { BookingRef: inRowPK });
+    
+    LocalReturnObject.ForQrCode.QrCodesArray = LocalQrCodesNeeded;
+    
+    return await LocalReturnObject;
+};
+
 let LastPkData = async () => {
     let LocalReturnObject = { KTF: false, KResult: "" };
     let LocalFromFromPk;
@@ -69,4 +97,4 @@ let LastPkData = async () => {
 
 };
 
-export { FromPk, LastPkData, FromPkForQrCodes };
+export { FromPk, LastPkData, FromPkForQrCodes, FromPkWithQrCodeObject };
