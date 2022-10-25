@@ -1,5 +1,7 @@
 import { StartFunc as FuncsForPkStartFunc } from "../FuncsForPk/Start";
-import { StartFunc as QrCodesStartFunc } from "../../QrCodes/PullFuncs/Original";
+//import { StartFunc as QrCodesStartFunc } from "../../QrCodes/PullFuncs/Original";
+import { StartFunc as QrCodesStartFunc } from "../../QrCodes/PullFuncs/WithBookingData";
+
 import _ from "../../../js/lodash";
 
 let FromPk = async ({ inRowPK }) => {
@@ -66,9 +68,11 @@ let FromPkWithQrCodeObject = async ({ inRowPK }) => {
     };
 
     let LocalQrCodesNeeded = _.filter(LocalFromQrCodesStartFunc.JsonData, { BookingRef: inRowPK });
-    
-    LocalReturnObject.ForQrCode.QrCodesArray = LocalQrCodesNeeded;
-    
+    let LocalKeyNeeded = ["GarmentsRef", "GarmentName"];
+
+    let LocalQrCodesNeededWithKeys = _.map(LocalQrCodesNeeded, LoopItem => _.pick(LoopItem, LocalKeyNeeded));
+    LocalReturnObject.ForQrCode.QrCodesArray = LocalQrCodesNeededWithKeys;
+
     return await LocalReturnObject;
 };
 

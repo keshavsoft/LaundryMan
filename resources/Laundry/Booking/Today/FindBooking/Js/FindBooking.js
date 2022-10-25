@@ -4,6 +4,7 @@ import { ChangeClassFunc } from "../../../../CommonFuncs/Header";
 // import { BookingClear } from "../Js/ClearFunc";
 import { LastBooking } from "../../../../../Dal/Bookings/Pick";
 import { LastPkData, FromPkWithQrCodeObject as DalFromPkWithQrCodeObject } from "../../../../../Dal/Bookings/PullFuncs/PickFuncs";
+//import { LastPkData, FromPkWithQrCodeObject as DalFromPkWithQrCodeObject } from "../../../../../Dal/Bookings/PullFuncs/PickFuncs";
 
 let FindBookingFunc = async (inEvent) => {
     if ((inEvent === undefined) === false) {
