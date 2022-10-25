@@ -2,12 +2,12 @@ import { StartFunc as QrCodesCheckQrCode } from "../../QrCodes/PullFuncs/CheckQr
 
 let CommonFileName = "Completed.json";
 
-let InsertFunc = async ({ inQrCode }) => {
+let InsertFunc = async ({ inQrCode, inQrCodeScanned }) => {
     let LocalReturnObject = { KTF: false, KResult: "" };
 
     try {
         let LocalFromCheck = await LocalCheckBeforeSave({ inQrCode });
-        console.log("LocalFromCheck : ", LocalFromCheck);
+        
         if (LocalFromCheck.KTF === false) {
             LocalReturnObject.KReason = LocalFromCheck.KReason;
             return await LocalReturnObject;
@@ -17,43 +17,11 @@ let InsertFunc = async ({ inQrCode }) => {
         let LocalDataAsJson = JSON.parse(LocalData);
 
         LocalDataAsJson[inQrCode] = {
+            QrCodeScanned: inQrCodeScanned,
             DateTime: LocalGetDate()
         };
 
         let LocalFromWriteFile = await Neutralino.filesystem.writeFile(`./KData/JSON/2017/${CommonFileName}`, JSON.stringify(LocalDataAsJson));
-
-        if (LocalFromWriteFile.success) {
-            LocalReturnObject.KResult = `${inQrCode} saved successfully...`;
-            LocalReturnObject.KTF = true;
-        };
-
-        return await LocalReturnObject;
-    } catch (error) {
-        console.log("error InsertFunc : ", error);
-    };
-
-    return await LocalReturnObject;
-};
-
-let InsertFunc_old = async ({ inQrCode }) => {
-    let LocalReturnObject = { KTF: false, KResult: "" };
-
-    try {
-        let LocalJsonFileName = "Completed.json";
-
-        let LocalData = await Neutralino.filesystem.readFile(`./KData/JSON/2017/${LocalJsonFileName}`);
-        let LocalDataAsJson = JSON.parse(LocalData);
-
-        if (inQrCode in LocalDataAsJson) {
-            LocalReturnObject.KReason = `${inQrCode} is already scanned!`;
-            return await LocalReturnObject;
-        };
-
-        LocalDataAsJson[inQrCode] = {
-            DateTime: LocalGetDate()
-        };
-
-        let LocalFromWriteFile = await Neutralino.filesystem.writeFile(`./KData/JSON/2017/${LocalJsonFileName}`, JSON.stringify(LocalDataAsJson));
 
         if (LocalFromWriteFile.success) {
             LocalReturnObject.KResult = `${inQrCode} saved successfully...`;
@@ -109,6 +77,5 @@ let LocalGetDate = () => {
 
     return `${dd}-${MM}-${yyyy}-${HH}-${mm}-${ss}`;
 };
-
 
 export { InsertFunc }

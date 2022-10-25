@@ -2,6 +2,7 @@ import { ScanHtmlFunc } from "../../../Completed/Scan/Js/HtmlFuncs/FromHbs";
 import { InsertFunc } from "../../../../Dal/Completed/ScanFuncs";
 import { ChangeClassFunc } from "../../../CommonFuncs/Header";
 import { InsertFunc as DalSaveFunc } from "../../../../Dal/Completed/PushFuncs/SaveFunc";
+import { AddListeners } from "./ListenersFuncs";
 
 let ScanFunc = async () => {
     let jVarLocalFormVertical = document.getElementById("FormVertical");
@@ -48,7 +49,7 @@ let ScanHeaderId = async (inEvent) => {
     let jVarLocalKCont1 = document.getElementById("KCont1");
     jVarLocalKCont1.innerHTML = jVarInsideTemplate;
     LocalSetFocusFunc();
-    LocalAddListeners();
+    AddListeners();
 };
 
 let LocalSetFocusFunc = () => {

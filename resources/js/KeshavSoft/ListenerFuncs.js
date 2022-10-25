@@ -26,8 +26,6 @@ let LocaljFHeaderSearchInputKeyPress = async (event) => {
 
         let jVarLoalFromDalForPKFunsStartFunc = await DalForPKFunsStartFunc({ inBookingPK: jVarLocalBookingPK });
 
-        console.log("jVarLocalBookingPK : ", jVarLocalBookingPK, jVarLoalFromDalForPKFunsStartFunc);
-        
         if (jVarLoalFromDalForPKFunsStartFunc.KTF === false) {
             console.log("jVarLoalFromDalForPKFunsStartFunc : ", jVarLoalFromDalForPKFunsStartFunc.KReason);
             return;
