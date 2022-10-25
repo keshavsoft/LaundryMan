@@ -23,12 +23,14 @@ let LocaljFHeaderSearchInputKeyPress = async (event) => {
         let LocalScanAsArray = jVarLocalCurrentTarget.value.split("/");
         let jVarLocalBookingPK = LocalScanAsArray[LocalScanAsArray.length - 1];
         let jVarLocalQrCode = LocalScanAsArray[0];
-        
-        let jVarLoalFromDalForPKFunsStartFunc = await DalForPKFunsStartFunc();
 
+        let jVarLoalFromDalForPKFunsStartFunc = await DalForPKFunsStartFunc({ inBookingPK: jVarLocalBookingPK });
+
+        console.log("jVarLocalBookingPK : ", jVarLocalBookingPK, jVarLoalFromDalForPKFunsStartFunc);
+        
         if (jVarLoalFromDalForPKFunsStartFunc.KTF === false) {
-            LocalReturnObject.KReason = jVarLoalFromDalForPKFunsStartFunc.KReason;
-            return await LocalReturnObject;
+            console.log("jVarLoalFromDalForPKFunsStartFunc : ", jVarLoalFromDalForPKFunsStartFunc.KReason);
+            return;
         };
 
         let jVarLoalFromDalBillingStartFunc = await DalBillingStartFunc();
@@ -45,7 +47,7 @@ let LocaljFHeaderSearchInputKeyPress = async (event) => {
 
         jVarLocalCurrentTarget.value = "";
 
-       // console.log("1111111111 : ", jVarLocalCurrentTarget.value, jVarLoalFromDalBillingStartFunc);
+        // console.log("1111111111 : ", jVarLocalCurrentTarget.value, jVarLoalFromDalBillingStartFunc);
     };
 };
 
