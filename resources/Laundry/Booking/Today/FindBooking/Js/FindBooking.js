@@ -1,10 +1,11 @@
-import { FindBookingtHtmlFunc } from "./HtmlFuns/FromHbs";
+// import { FindBookingShowtHtmlFunc } from "./HtmlFuns/FromHbs";
 import { ChangeClassFunc } from "../../../../CommonFuncs/Header";
 // import { BookingSaveFunc } from "../Js/SaveFuncs";
 // import { BookingClear } from "../Js/ClearFunc";
 import { LastBooking } from "../../../../../Dal/Bookings/Pick";
 import { LastPkData, FromPkWithQrCodeObject as DalFromPkWithQrCodeObject } from "../../../../../Dal/Bookings/PullFuncs/PickFuncs";
 //import { LastPkData, FromPkWithQrCodeObject as DalFromPkWithQrCodeObject } from "../../../../../Dal/Bookings/PullFuncs/PickFuncs";
+import { FindBookingHtmlFunc } from "./HtmlFuns/FromTemplate";
 
 let FindBookingFunc = async (inEvent) => {
     if ((inEvent === undefined) === false) {
@@ -12,7 +13,9 @@ let FindBookingFunc = async (inEvent) => {
         ChangeClassFunc({ inHtmlControl: jVarLocalCurrentTarget });
     };
 
-    let jVarLocalFromHbs = await FindBookingtHtmlFunc();
+    await FindBookingHtmlFunc();
+
+    let jVarLocalFromHbs = await FindBookingShowtHtmlFunc();
 
     let jVarLocalKCont1 = document.getElementById("KCont1");
 
@@ -31,7 +34,9 @@ let ToDOMBodyFromPK = async ({ inBookingPK }) => {
     let jVarLocalFindBookingHeaderId = document.getElementById("FindBookingHeaderId");
     ChangeClassFunc({ inHtmlControl: jVarLocalFindBookingHeaderId });
 
-    let jVarLocalFromHbs = await FindBookingtHtmlFunc();
+    await FindBookingHtmlFunc();
+
+    let jVarLocalFromHbs = await FindBookingShowtHtmlFunc();
 
     let jVarLocalKCont1 = document.getElementById("KCont1");
 
@@ -51,7 +56,8 @@ let ToDOMBodyFromPKAndQrCode = async ({ inBookingPK, inQrCode }) => {
     let jVarLocalFindBookingHeaderId = document.getElementById("FindBookingHeaderId");
     ChangeClassFunc({ inHtmlControl: jVarLocalFindBookingHeaderId });
 
-    let jVarLocalFromHbs = await FindBookingtHtmlFunc();
+
+    let jVarLocalFromHbs = await FindBookingShowtHtmlFunc();
 
     let jVarLocalKCont1 = document.getElementById("KCont1");
 
