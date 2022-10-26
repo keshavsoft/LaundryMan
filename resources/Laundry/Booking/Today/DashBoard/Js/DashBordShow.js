@@ -27,6 +27,13 @@ let DashBoardShow = async (inEvent) => {
     document.getElementById("KCont1").innerHTML = jVarLocalHtml;
 
     AddlistenersFunc();
+    LocalSetFocusFunc();
+    
+};
+
+let LocalSetFocusFunc = () => {
+    let jVarLocalCustomerName = document.getElementById("SearchQrCodeTable");
+    jVarLocalCustomerName.focus();
 };
 
 let LocalAddlistener = () => {
@@ -56,16 +63,12 @@ let LocalApplyRowColours = ({ inJsonData }) => {
             if (value.QrCodesCompleted < value.QrCodesTotal) {
                 value.TableRowColour = "table-danger";
 
-                LocalSetFocusFunc();
             };
         }
     );
 };
 
 
-let LocalSetFocusFunc = () => {
-    let jVarLocalCustomerName = document.getElementById("SearchQrCodeTable");
-    jVarLocalCustomerName.focus();
-};
+
 
 export { DashBoardShow }
