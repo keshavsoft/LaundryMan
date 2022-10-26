@@ -21,5 +21,13 @@ let TodayShowFunc = async (inEvent) => {
     let jVarLocalHtml = template(jVarLocalDataNeeded.JsonData);
 
     document.getElementById("KTableBody").innerHTML = jVarLocalHtml;
+
+    LocalSetFocusFunc();
+};
+
+
+let LocalSetFocusFunc = () => {
+    let jVarLocalCustomerName = document.getElementById("SearchQrCodeTable");
+    jVarLocalCustomerName.focus();
 };
 export{TodayShowFunc};
