@@ -42,7 +42,6 @@ let ToDOMBodyFromPK = async ({ inBookingPK }) => {
     // };
 
     // LocalFuncAddListeners();
-    LocalSetFocusFunc();
 };
 
 let ToDOMBodyAsParts = async ({ inBookingPK, inQrCode }) => {
@@ -57,11 +56,6 @@ let ToDOMBodyAsParts = async ({ inBookingPK, inQrCode }) => {
 
     // LocalFuncAddListeners();
     //LocalSetFocusFunc();
-};
-
-let LocalSetFocusFunc = () => {
-    let jVarLocalCustomerName = document.getElementById("CustomerName");
-    jVarLocalCustomerName.focus();
 };
 
 export { FindBookingFunc, ToDOMBodyFromPK, ToDOMBodyAsParts };
