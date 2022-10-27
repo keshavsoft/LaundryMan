@@ -50,8 +50,7 @@ let ToDOMBodyAsParts = async ({ inBookingPK, inQrCode }) => {
     console.log("ToDOMBodyAsParts : ", jVarLocalDataToShow);
 
     await ShowInDOMStartFunc({
-        inData: jVarLocalDataToShow.ForQrCode,
-        inCustomerName: jVarLocalDataToShow.ForQrCode.CustomerName
+        inData: jVarLocalDataToShow.ForQrCode
     });
 
     // var template = Handlebars.compile(jVarLocalFromHbs);
