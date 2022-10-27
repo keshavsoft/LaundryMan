@@ -7,11 +7,12 @@ let StartFunc = async ({ inData, inCustomerName }) => {
     jVarLocalKCont1.innerHTML = jVarLocalFromHbs;
 
     LocalFuncCustomerDetails({
-        inCustomerName: inData.CustomerName
+        inCustomerName: inData.CustomerName,
+        inMobile: inData.Mobile
     });
 };
 
-let LocalFuncCustomerDetails = ({ inData, inCustomerName }) => {
+let LocalFuncCustomerDetails = ({ inData, inCustomerName, inMobile }) => {
     let jVarLocalOrderNo = document.getElementById("OrderNo");
 
     jVarLocalOrderNo.value = inData;
@@ -20,7 +21,7 @@ let LocalFuncCustomerDetails = ({ inData, inCustomerName }) => {
     if (jVarLocalOrderNo !== null) jVarLocalCustomerName.value = inCustomerName;
 
     let jVarLocalMobile = document.getElementById("Mobile");
-    jVarLocalMobile.value = inData;
+    jVarLocalMobile.value = inMobile;
 
     let jVarLocalGarmentsTotalPcs = document.getElementById("GarmentsTotalPcs");
     jVarLocalGarmentsTotalPcs.value = inData;
